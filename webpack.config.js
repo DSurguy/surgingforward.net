@@ -1,5 +1,6 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 const yargs = require('yargs')
 
 let argv = yargs.argv
@@ -35,6 +36,7 @@ module.exports = {
     }
   },
   plugins: [
+    new CleanWebpackPlugin([path.resolve(__dirname, 'dist/public')]),
     new HtmlWebpackPlugin({
       title: 'Derek Surguy | Freelance Web Software',
       template: path.resolve(__dirname, 'src/client/index.html')

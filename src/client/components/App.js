@@ -1,4 +1,6 @@
 import React from 'react'
+import { ThemeProvider } from 'mineral-ui/themes';
+import Text from 'mineral-ui/Text';
 
 export default class App extends React.Component{
   constructor(props){
@@ -7,6 +9,8 @@ export default class App extends React.Component{
   }
 
   render(){
-    return <h1>Hello!</h1>
+    return <ThemeProvider>
+      <Text element="h1">Hello!</Text>
+    </ThemeProvider>
   }
 }
