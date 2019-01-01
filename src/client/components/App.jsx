@@ -1,4 +1,5 @@
 import React from 'react'
+import Hero from './Hero.jsx'
 
 export default class App extends React.Component{
   constructor(props){
@@ -7,6 +8,8 @@ export default class App extends React.Component{
   }
 
   render(){
-    return <h1>Hello!</h1>
+    return <React.Fragment>
+      <Hero />
+    </React.Fragment>
   }
 }
