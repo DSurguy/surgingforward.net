@@ -3,6 +3,8 @@ import styled from 'styled-components'
 import heroImageSrc from '../assets/hero.jpg'
 
 const HeroContainer = styled.div`
+  position: relative;
+  z-index: 1;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -11,6 +13,18 @@ const HeroContainer = styled.div`
   background-image: url(${heroImageSrc});
   background-size: cover;
   background-position: center;
+`
+
+const HeroGradient = styled.div`
+  position: absolute;
+  bottom: -100px;
+  height: 200px;
+  width: 100%;
+  background: rgb(12,26,29);
+  background: -moz-linear-gradient(180deg, rgba(12,26,29,0) 0%, rgba(12,26,29,1) 50%, rgba(12,26,29,1) 100%);
+  background: -webkit-linear-gradient(180deg, rgba(12,26,29,0) 0%, rgba(12,26,29,1) 50%, rgba(12,26,29,1) 100%);
+  background: linear-gradient(180deg, rgba(12,26,29,0) 0%, rgba(12,26,29,1) 50%, rgba(12,26,29,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#0c1a1d",endColorstr="#0c1a1d",GradientType=1);
 `
 
 const HeroContentPadding = styled.div`
@@ -59,6 +73,7 @@ export default class Hero extends Component {
           <SubHeader>Custom Software, Websites &amp; Consulting</SubHeader>
         </HeroContent>
       </HeroContentPadding>
+      <HeroGradient />
     </HeroContainer> )
   }
 }

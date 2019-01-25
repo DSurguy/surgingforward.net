@@ -1,5 +1,6 @@
 import React from 'react'
 import Hero from './Hero.jsx'
+import Body from './Body.jsx'
 
 export default class App extends React.Component{
   constructor(props){
@@ -10,6 +11,7 @@ export default class App extends React.Component{
   render(){
     return <React.Fragment>
       <Hero />
+      <Body />
     </React.Fragment>
   }
 }
