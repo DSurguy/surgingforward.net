@@ -1,6 +1,11 @@
 import React from 'react';
 import styled from 'styled-components'
+import SocialLink from './SocialLink.jsx'
+
 import facePicSrc from '../assets/face.jpg'
+import mailIconSrc from '../assets/mail.svg'
+import githubIconSrc from '../assets/github.svg'
+import linkedInIconSrc from '../assets/linkedin.svg'
 
 const BodyContainer = styled.div`
   z-index: 2;
@@ -12,6 +17,7 @@ const BodyContainer = styled.div`
   min-height: 400px;
   background-color: #fff;
   margin-bottom: 200px;
+  padding: 90px;
 `
 
 const IntroFlex = styled.div`
@@ -19,8 +25,8 @@ const IntroFlex = styled.div`
 `
 
 const IntroFlexLeft = styled.div`
-  padding: 90px 45px 50px 55px;
-  width: 640px;
+  padding: 0 32px 50px 0;
+  width: 550px;
 `
 
 const IntroParagraph = styled.p`
@@ -32,7 +38,7 @@ const IntroParagraph = styled.p`
 `
 
 const IntroFlexRight = styled.div`
-  width: 320px;
+  width: 230px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -44,6 +50,25 @@ const FacePic = styled.img`
   border-radius: 100px;
   margin-top: 50px;
   box-shadow: 0 0 10px 3px rgba(0,0,0,0.16)
+`
+
+const Divider = styled.div`
+  margin: 0 auto;
+  width: 640px;
+  height: 10px;
+  background-color: #EFEFEF;
+`
+
+const ConnnectParagraph = styled.p`
+  font-size: 24px;
+  color: #777;
+  font-weight: 300;
+  text-align: center;
+  padding 0 0 20px 0;
+`
+
+const StyledSocialLink = styled(SocialLink)`
+  margin-top: 20px;
 `
 
 export default class Body extends React.Component {
@@ -69,6 +94,13 @@ export default class Body extends React.Component {
           <FacePic src={facePicSrc} alt="Photo of Derek Surguy" />
         </IntroFlexRight>
       </IntroFlex>
+      <Divider />
+      <ConnnectParagraph>
+        Connect with me on any of these services
+      </ConnnectParagraph>
+      <StyledSocialLink icon={mailIconSrc} href="Surguy.Derek@gmail.com" linkPrefix={'mailto:'} />
+      <StyledSocialLink icon={githubIconSrc} href="https://github.com/DSurguy" />
+      <StyledSocialLink icon={linkedInIconSrc} href="https://linkedin.com/DSurguy" />
     </BodyContainer>
   }
 }
