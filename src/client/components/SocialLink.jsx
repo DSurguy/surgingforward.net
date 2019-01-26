@@ -24,8 +24,8 @@ const Icon = styled.img`
 
 const LinkBackground = styled.div`
   display: flex;
+  flex-grow: 1;
   align-items: center;
-  width: 564px;
   background-color: #f5f5f5;
   border-top-left-radius: 8px;
   border-bottom-left-radius: 8px;
@@ -50,6 +50,7 @@ const LinkCopyButton = styled.div`
   display: flex;
   width: 120px;
   height: 56px;
+  margin-right: 12px;
   background-color: #0099FF;
   border-top-right-radius: 8px;
   border-bottom-right-radius: 8px;
