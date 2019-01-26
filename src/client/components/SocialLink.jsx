@@ -75,10 +75,23 @@ const LinkCopyText = styled.div`
   font-size: 24px;
 `
 
+const HiddenInput = styled.input`
+  width: 1px;
+  height 1px;
+  position: absolute;
+  left: -9999px;
+`
+
 export default class SocialLink extends React.Component {
   constructor(props) {
     super(props);
     this.state = {  }
+
+    this.setLinkRef = link => {
+      this.linkRef = link
+    }
+
+    this.copyLink = this.copyLink.bind(this)
   }
   render() { 
     return <LinkContainer>
@@ -86,12 +99,18 @@ export default class SocialLink extends React.Component {
         <Icon src={this.props.icon} />
       </IconContainer>
       <LinkBackground>
-        <Link href={`${this.props.linkPrefix||''}${this.props.href}`}>{this.props.href}</Link>
+        <Link href={`${this.props.linkPrefix||''}${this.props.href}`} >{this.props.href}</Link>
+        <HiddenInput ref={this.setLinkRef} type="text" value={this.props.href} />
       </LinkBackground>
-      <LinkCopyButton>
+      <LinkCopyButton onClick={this.copyLink}>
         <LinkCopyIcon src={copyIconSrc} />
         <LinkCopyText>Copy</LinkCopyText>
       </LinkCopyButton>
     </LinkContainer>
+  }
+
+  copyLink(){
+    this.linkRef.select()
+    document.execCommand("copy")
   }
 }
