@@ -116,7 +116,7 @@ export default class Body extends React.Component {
             Hi! I'm Derek Surguy. I'm a front-end software engineer in Dallas, Texas. I use React, NodeJs and related modern technology to create innovative, intuitive and performant applications.
           </IntroParagraph>
           <IntroParagraph>
-            I have a passion for helping other realize their goals, and strive to enable my clients and users to be more efficient and discover new ways to use their technology.
+            I have a passion for helping others realize their goals, and strive to enable my clients and users to be more efficient and discover new ways to use their technology.
           </IntroParagraph>
           <IntroParagraph>
             If you're looking to represent yourself in the digital space, create a website for your business or just wondering how technology can help you achieve your goals, reach out! I'd love to help you succeed!
