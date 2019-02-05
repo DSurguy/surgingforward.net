@@ -18,23 +18,29 @@ const BodyContainer = styled.div`
   background-color: #fff;
   margin-bottom: 200px;
   padding: 90px;
+  
+  @media (max-width: 700px) {
+    padding: 50px;
+  }
 `
 
 const IntroFlex = styled.div`
   display: flex;
+  flex-direction: row-reverse;
+  @media (max-width: 700px) {
+    display: block;
+    width: 100%;
+  }
 `
 
 const IntroFlexLeft = styled.div`
   padding: 0 32px 50px 0;
   width: 550px;
-`
 
-const IntroParagraph = styled.p`
-  display: block;
-  width: 95%;
-  margin: 0 auto 30px auto;
-  font-weight: 300;
-  font-size: 18px;
+  @media (max-width: 700px) {
+    width: 100%;
+    padding-right: 0;
+  }
 `
 
 const IntroFlexRight = styled.div`
@@ -42,14 +48,36 @@ const IntroFlexRight = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  @media (max-width: 700px) {
+    width: 100%;
+    height: 160px;
+    margin-bottom: 20px;
+  }
+`
+
+const IntroParagraph = styled.p`
+  display: block;
+  width: 95%;
+  margin: 0 auto 30px auto;
+  font-weight: 300;
+  font-size: 18px;  
+
+  @media (max-width: 700px) {
+    margin: 0 0 30px 0;
+  }
 `
 
 const FacePic = styled.img`
   width: 200px;
   height: 200px;
   border-radius: 100px;
-  margin-top: 50px;
-  box-shadow: 0 0 10px 3px rgba(0,0,0,0.16)
+  box-shadow: 0 0 10px 3px rgba(0,0,0,0.16);
+
+  @media (max-width: 700px) {
+    width: 160px;
+    height: 160px;
+    border-radius: 80px;
+  }
 `
 
 const Divider = styled.div`
@@ -80,6 +108,9 @@ export default class Body extends React.Component {
   render() { 
     return <BodyContainer>
       <IntroFlex>
+        <IntroFlexRight>
+          <FacePic src={facePicSrc} alt="Photo of Derek Surguy" />
+        </IntroFlexRight>
         <IntroFlexLeft>
           <IntroParagraph>
             Hi! I'm Derek Surguy. I'm a front-end software engineer in Dallas, Texas. I use React, NodeJs and related modern technology to create innovative, intuitive and performant applications.
@@ -91,9 +122,6 @@ export default class Body extends React.Component {
             If you're looking to represent yourself in the digital space, create a website for your business or just wondering how technology can help you achieve your goals, reach out! I'd love to help you succeed!
           </IntroParagraph>
         </IntroFlexLeft>
-        <IntroFlexRight>
-          <FacePic src={facePicSrc} alt="Photo of Derek Surguy" />
-        </IntroFlexRight>
       </IntroFlex>
       <Divider />
       <ConnnectParagraph>

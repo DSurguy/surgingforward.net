@@ -13,6 +13,11 @@ const HeroContainer = styled.div`
   background-image: url(${heroImageSrc});
   background-size: cover;
   background-position: center;
+
+  @media (max-width: 700px) {
+    height: 540px;
+    padding-right: 0;
+  }
 `
 
 const HeroGradient = styled.div`
