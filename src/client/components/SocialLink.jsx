@@ -7,6 +7,13 @@ const LinkContainer = styled.div`
   height: 80px;
   margin-bottom: 32px;
   display: flex;
+
+  @media (max-width: 700px) {
+    margin-left: -32px;
+    margin-right: -32px;
+    height: 144px;
+    flex-wrap: wrap;
+  }
 `
 
 const IconContainer = styled.div`
@@ -15,11 +22,23 @@ const IconContainer = styled.div`
   height: 100%;
   justify-content: center;
   align-items: center;
+
+  @media (max-width: 700px) {
+    width: 64px;
+    min-width: 64px;
+    height: 68px;
+  }
 `
 
 const Icon = styled.img`
   width: 48px;
   height: 48px;
+
+  @media (max-width: 700px) {
+    width: 32px;
+    height: 32px;
+    margin-top: 8px;
+  }
 `
 
 const LinkBackground = styled.div`
@@ -31,6 +50,12 @@ const LinkBackground = styled.div`
   border-bottom-left-radius: 8px;
   margin-top: 12px;
   height: 56px;
+
+  @media (max-width: 700px) {
+    border-radius: 8px;
+    margin-right: 16px;
+    justify-content: center;
+  }
 `
 
 const Link = styled.a`
@@ -43,6 +68,10 @@ const Link = styled.a`
   &:hover,
   &:visited {
     color: #000;
+  }
+
+  @media (max-width: 700px) {
+    font-size: 22px;
   }
 `
 
@@ -61,6 +90,13 @@ const LinkCopyButton = styled.div`
 
   &:active {
     background-color: #007BCE;
+  }
+
+  @media (max-width: 700px) {
+    width: calc(100% - 32px);
+    border-radius: 8px;
+    margin: 0 auto;
+    justify-content: center;
   }
 `
 
