@@ -15,6 +15,10 @@ const LinkContainer = styled.div`
     height: 144px;
     flex-wrap: wrap;
   }
+
+  @media (max-width: 420px) {
+    position: relative;
+  }
 `
 
 const IconContainer = styled.div`
@@ -29,6 +33,18 @@ const IconContainer = styled.div`
     min-width: 64px;
     height: 68px;
   }
+
+  @media (max-width: 420px) {
+    width: 32px;
+    min-width: 0;
+    height: 32px;
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    background-color: #fff;
+    border-radius: 4px;
+    box-shadow: 0 0 10px 3px rgba(0,0,0,0.16);
+  }
 `
 
 const Icon = styled.img`
@@ -39,6 +55,12 @@ const Icon = styled.img`
     width: 32px;
     height: 32px;
     margin-top: 8px;
+  }
+
+  @media (max-width: 420px) {
+    width: 28px;
+    height: 28px;
+    margin-top: 0;
   }
 `
 
@@ -57,6 +79,10 @@ const LinkBackground = styled.div`
     margin-right: 16px;
     justify-content: center;
   }
+
+  @media (max-width: 420px) {
+    margin-left: 16px;
+  }
 `
 
 const Link = styled.a`
@@ -72,7 +98,12 @@ const Link = styled.a`
   }
 
   @media (max-width: 700px) {
+    margin-left: 0;
     font-size: 22px;
+  }
+
+  @media (max-width: 420px) {
+    font-size: 20px;
   }
 `
 
@@ -104,13 +135,26 @@ const LinkCopyButton = styled.div`
 const LinkCopyIcon = styled.img`
   height: 32px;
   width: 32px;
-  margin-top: 12px;
-  margin: 0 10px;
+  margin: 0 10px 0 10px;
+
+  @media (max-width: 700px) {
+    height: 24px;
+    width: 24px;
+    margin: 0 10px 0 0;
+  }
 `
 
 const LinkCopyText = styled.div`
   color: #fff;
   font-size: 24px;
+
+  @media (max-width: 700px) {
+    font-size: 22px;
+  }
+
+  @media (max-width: 420px) {
+    font-size: 20px;
+  }
 `
 
 const HiddenInput = styled.input`
@@ -138,7 +182,7 @@ export default class SocialLink extends React.Component {
       </IconContainer>
       <LinkBackground>
         <Link href={`${this.props.linkPrefix||''}${this.props.href}`} >{this.props.href}</Link>
-        <HiddenInput ref={this.setLinkRef} type="text" value={this.props.href} />
+        <HiddenInput ref={this.setLinkRef} type="text" value={this.props.href} readOnly={true} />
       </LinkBackground>
       <LinkCopyButton onClick={this.copyLink}>
         <LinkCopyIcon src={copyIconSrc} />

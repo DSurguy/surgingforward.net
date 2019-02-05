@@ -36,10 +36,15 @@ const HeroContentPadding = styled.div`
   width: 400px;
   height: 240px;
   flex-grow: 0;
+
+  @media (max-width: 420px) {
+    width: 90%;
+    padding-right: 0;
+  }
 `
 
 const HeroContent = styled.div`
-  width: 400px;
+  width: 100%;
   height: 200px;
   border: 4px solid var(--gray0);
 `
@@ -64,6 +69,14 @@ const SubHeader = styled.h2`
   color: var(--gray0);
 `
 
+const SubHeaderSection = styled.div`
+  display: inline;
+
+  @media (max-width: 420px) {
+    display: block;
+  }
+`
+
 export default class Hero extends Component {
   constructor(props) {
     super(props);
@@ -75,7 +88,14 @@ export default class Hero extends Component {
         <HeroContent>
           <TopHeader>Derek Surguy</TopHeader>
           <Divider />
-          <SubHeader>Custom Software, Websites &amp; Consulting</SubHeader>
+          <SubHeader>
+            <SubHeaderSection>
+              Custom Software, Websites
+            </SubHeaderSection>
+            <SubHeaderSection>
+              &nbsp;&amp; Consulting
+            </SubHeaderSection>
+          </SubHeader>
         </HeroContent>
       </HeroContentPadding>
       <HeroGradient />
