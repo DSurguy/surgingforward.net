@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import copyIconSrc from '../assets/copy.svg'
+import cogoToast from 'cogo-toast';
 
 const LinkContainer = styled.div`
   box-shadow: 0 0 6px rgba(0,0,0,0.16);
@@ -149,5 +150,6 @@ export default class SocialLink extends React.Component {
   copyLink(){
     this.linkRef.select()
     document.execCommand("copy")
+    cogoToast.success(`Copied to clipboard: "${this.linkRef.value}"`);
   }
 }
