@@ -157,11 +157,13 @@ const LinkCopyText = styled.div`
   }
 `
 
-const HiddenInput = styled.input`
-  width: 1px;
-  height 1px;
+const HiddenDiv = styled.div`
   position: absolute;
+  display: block;
+  width: 1px;
+  height: 1px;
   left: -9999px;
+  overflow: hidden;
 `
 
 export default class SocialLink extends React.Component {
@@ -182,7 +184,7 @@ export default class SocialLink extends React.Component {
       </IconContainer>
       <LinkBackground>
         <Link href={`${this.props.linkPrefix||''}${this.props.href}`} >{this.props.href}</Link>
-        <HiddenInput ref={this.setLinkRef} type="text" value={this.props.href} readOnly={true} />
+        <HiddenDiv ref={this.setLinkRef}>{this.props.href}</HiddenDiv>
       </LinkBackground>
       <LinkCopyButton onClick={this.copyLink}>
         <LinkCopyIcon src={copyIconSrc} />
@@ -192,8 +194,12 @@ export default class SocialLink extends React.Component {
   }
 
   copyLink(){
-    this.linkRef.select()
-    document.execCommand("copy")
-    cogoToast.success(`Copied to clipboard: "${this.linkRef.value}"`);
+    window.getSelection().removeAllRanges();
+    let range = document.createRange()
+    range.selectNode(this.linkRef)
+    window.getSelection().addRange(range);
+    document.execCommand('copy')
+
+    cogoToast.success(`Copied to clipboard: "${this.props.href}"`);
   }
 }
