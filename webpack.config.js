@@ -1,6 +1,6 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const CleanWebpackPlugin = require('clean-webpack-plugin');
+const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const yargs = require('yargs')
 
@@ -24,39 +24,27 @@ module.exports = {
       },
       {
         test: /\.(png|svg|jpg|gif)$/,
-        use: [
-          'file-loader'
-        ]
+        type: 'asset/resource'
       }
     ]
   },
   devtool: !argv.prod ? 'inline-source-map' : undefined,
   devServer: {
-    contentBase: path.resolve(__dirname, 'dist/public')
+    contentBase: path.resolve(__dirname, 'dist')
   },
   output: {
     filename: '[name].js',
-    path: path.resolve(__dirname, 'dist/public')
-  },
-  optimization: {
-    splitChunks: {
-      cacheGroups: {
-        vendor: {
-          chunks: 'initial',
-          name: 'vendor',
-          test: /node_modules/,
-          enforce: true
-        }
-      }
-    }
+    path: path.resolve(__dirname, 'dist')
   },
   plugins: [
-    new CleanWebpackPlugin([path.resolve(__dirname, 'dist/public')]),
-    new MiniCssExtractPlugin({
-      filename: "[name].css"
+    new CleanWebpackPlugin({
+      cleanOnceBeforeBuildPatterns: [
+        path.resolve(__dirname, 'dist')
+      ]
     }),
+    new MiniCssExtractPlugin(),
     new HtmlWebpackPlugin({
-      title: 'Derek Surguy | Freelance Web Software',
+      title: 'Derek Surguy | Frontend Software Engineer',
       template: path.resolve(__dirname, 'src/client/index.html')
     })
   ]
