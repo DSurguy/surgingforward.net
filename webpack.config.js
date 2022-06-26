@@ -32,6 +32,11 @@ module.exports = {
   devServer: {
     contentBase: path.resolve(__dirname, 'dist')
   },
+  optimization: {
+    splitChunks: {
+      chunks: 'all',
+    },
+  },
   output: {
     filename: '[name].js',
     path: path.resolve(__dirname, 'dist')
