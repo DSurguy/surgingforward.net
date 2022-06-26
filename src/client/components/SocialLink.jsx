@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import styled from 'styled-components'
 import copyIconSrc from '../assets/copy.svg'
 import cogoToast from 'cogo-toast';
@@ -166,40 +166,36 @@ const HiddenDiv = styled.div`
   overflow: hidden;
 `
 
-export default class SocialLink extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {  }
+const SocialLink = ({
+  href,
+  icon,
+  linkPrefix,
+}) => {
+  const hiddenLinkElement = useRef(null);
 
-    this.setLinkRef = link => {
-      this.linkRef = link
-    }
-
-    this.copyLink = this.copyLink.bind(this)
-  }
-  render() { 
-    return <LinkContainer>
-      <IconContainer>
-        <Icon src={this.props.icon} />
-      </IconContainer>
-      <LinkBackground>
-        <Link href={`${this.props.linkPrefix||''}${this.props.href}`} >{this.props.href}</Link>
-        <HiddenDiv ref={this.setLinkRef}>{this.props.href}</HiddenDiv>
-      </LinkBackground>
-      <LinkCopyButton onClick={this.copyLink}>
-        <LinkCopyIcon src={copyIconSrc} />
-        <LinkCopyText>Copy</LinkCopyText>
-      </LinkCopyButton>
-    </LinkContainer>
-  }
-
-  copyLink(){
+  const copyLink = () => {
     window.getSelection().removeAllRanges();
     let range = document.createRange()
-    range.selectNode(this.linkRef)
+    range.selectNode(hiddenLinkElement.current)
     window.getSelection().addRange(range);
     document.execCommand('copy')
 
-    cogoToast.success(`Copied to clipboard: "${this.props.href}"`);
+    cogoToast.success(`Copied to clipboard: "${href}"`);
   }
+
+  return (<LinkContainer>
+    <IconContainer>
+      <Icon src={icon} />
+    </IconContainer>
+    <LinkBackground>
+      <Link href={`${linkPrefix||''}${href}`} >{href}</Link>
+      <HiddenDiv ref={hiddenLinkElement}>{href}</HiddenDiv>
+    </LinkBackground>
+    <LinkCopyButton onClick={copyLink}>
+      <LinkCopyIcon src={copyIconSrc} />
+      <LinkCopyText>Copy</LinkCopyText>
+    </LinkCopyButton>
+  </LinkContainer>)
 }
+
+export default SocialLink;

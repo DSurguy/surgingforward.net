@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import heroImageSrc from '../assets/hero.jpg'
 
@@ -77,28 +77,24 @@ const SubHeaderSection = styled.div`
   }
 `
 
-export default class Hero extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {  }
-  }
-  render() { 
-    return ( <HeroContainer>
-      <HeroContentPadding>
-        <HeroContent>
-          <TopHeader>Derek Surguy</TopHeader>
-          <Divider />
-          <SubHeader>
-            <SubHeaderSection>
-              Custom Software, Websites
-            </SubHeaderSection>
-            <SubHeaderSection>
-              &nbsp;&amp; Consulting
-            </SubHeaderSection>
-          </SubHeader>
-        </HeroContent>
-      </HeroContentPadding>
-      <HeroGradient />
-    </HeroContainer> )
-  }
-}
+const Hero =  () => (
+  <HeroContainer>
+    <HeroContentPadding>
+      <HeroContent>
+        <TopHeader>Derek Surguy</TopHeader>
+        <Divider />
+        <SubHeader>
+          <SubHeaderSection>
+            Custom Software, Websites
+          </SubHeaderSection>
+          <SubHeaderSection>
+            &nbsp;&amp; Consulting
+          </SubHeaderSection>
+        </SubHeader>
+      </HeroContent>
+    </HeroContentPadding>
+    <HeroGradient />
+  </HeroContainer>
+)
+
+export default Hero;

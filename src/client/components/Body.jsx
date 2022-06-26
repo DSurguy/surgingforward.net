@@ -100,36 +100,32 @@ const StyledSocialLink = styled(SocialLink)`
   margin-top: 20px;
 `
 
-export default class Body extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {  }
-  }
-  render() { 
-    return <BodyContainer>
-      <IntroFlex>
-        <IntroFlexRight>
-          <FacePic src={facePicSrc} alt="Photo of Derek Surguy" />
-        </IntroFlexRight>
-        <IntroFlexLeft>
-          <IntroParagraph>
-            Hi! I'm Derek Surguy. I'm a front-end software engineer in Dallas, Texas. I use React, NodeJs and related modern technology to create innovative, intuitive and performant applications.
-          </IntroParagraph>
-          <IntroParagraph>
-            I have a passion for helping others realize their goals, and strive to enable my clients and users to be more efficient and discover new ways to use their technology.
-          </IntroParagraph>
-          <IntroParagraph>
-            If you're looking to represent yourself in the digital space, create a website for your business or just wondering how technology can help you achieve your goals, reach out! I'd love to help you succeed!
-          </IntroParagraph>
-        </IntroFlexLeft>
-      </IntroFlex>
-      <Divider />
-      <ConnnectParagraph>
-        Connect with me on any of these services
-      </ConnnectParagraph>
-      <StyledSocialLink icon={mailIconSrc} href="Surguy.Derek@gmail.com" linkPrefix={'mailto:'} />
-      <StyledSocialLink icon={githubIconSrc} href="https://github.com/DSurguy" />
-      <StyledSocialLink icon={linkedInIconSrc} href="https://linkedin.com/DSurguy" />
-    </BodyContainer>
-  }
-}
+const Body = () => (
+  <BodyContainer>
+    <IntroFlex>
+      <IntroFlexRight>
+        <FacePic src={facePicSrc} alt="Photo of Derek Surguy" />
+      </IntroFlexRight>
+      <IntroFlexLeft>
+        <IntroParagraph>
+          Hi! I'm Derek Surguy. I'm a front-end software engineer in Dallas, Texas with over a decade of experience. I use modern web technologies to create innovative, intuitive and performant applications.
+        </IntroParagraph>
+        <IntroParagraph>
+          I have a passion for helping others realize their goals, and strive to enable my clients and users to be more efficient and discover new ways to use their technology.
+        </IntroParagraph>
+        <IntroParagraph>
+          If you're looking to represent yourself in the digital space, create a website for your business or just wondering how technology can help you achieve your goals, reach out! I'd love to help you succeed!
+        </IntroParagraph>
+      </IntroFlexLeft>
+    </IntroFlex>
+    <Divider />
+    <ConnnectParagraph>
+      Connect with me on any of these services
+    </ConnnectParagraph>
+    <StyledSocialLink icon={mailIconSrc} href="Surguy.Derek@gmail.com" linkPrefix={'mailto:'} />
+    <StyledSocialLink icon={githubIconSrc} href="https://github.com/DSurguy" />
+    <StyledSocialLink icon={linkedInIconSrc} href="https://linkedin.com/DSurguy" />
+  </BodyContainer>
+)
+
+export default Body;
