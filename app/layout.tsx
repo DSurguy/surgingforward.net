@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { twMerge } from 'tailwind-merge';
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
+const bodyClass = twMerge(inter.className, 'main-bg');
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -16,7 +18,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={bodyClass}>{children}</body>
     </html>
   );
 }

@@ -31,3 +31,12 @@ body {
     text-wrap: balance;
   }
 }
+
+@layer components {
+  .main-bg {
+    background-color: #dce0dd;
+    opacity: 0.8;
+    background-image: radial-gradient(#316232 0.5px, #dce0dd 0.5px);
+    background-size: 10px 10px;
+  }
+}
