@@ -2,5 +2,7 @@
   "installCommand": "npm install",
   "buildCommand": "next build",
   "ignoreCommand": "(exit 1)",
-  "framework": "nextjs"
+  "framework": "nextjs",
+  "outputDirectory": ".next",
+  "devCommand": "next dev"
 }
