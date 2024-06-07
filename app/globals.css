@@ -16,14 +16,16 @@
   }
 }
 
+
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background-image: url(/bg.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  height: 100vh;
+  width: 100vw;
 }
 
 @layer utilities {
@@ -33,10 +35,32 @@ body {
 }
 
 @layer components {
-  .main-bg {
-    background-color: #dce0dd;
-    opacity: 0.8;
-    background-image: radial-gradient(#316232 0.5px, #dce0dd 0.5px);
-    background-size: 10px 10px;
+  .main-home {
+    clip-path: polygon(0 0, 720px 0, 540px 100%, 0 100%);
+    transition: clip-path 0.5s ease;
+    width: 100vw;
+    height: 100vh;
+  }
+
+  .main-home.transition {
+    transition: clip-path 0.5s ease;
+    clip-path: polygon(
+      21.875vw 50px,
+      78.125vw 50px,
+      78.125vw calc(100vh - 50px),
+      21.875vw calc(100vh - 50px)
+    );
+  }
+  .main-placeholder {
+    position: absolute;
+    z-index: -1;
+    width: 56.25vw;
+    height: calc(100vh - 100px);
+    left: 21.875vw;
+    top: 50px;
+    background-color: #fff;
+  }
+  .main-min-size {
+    min-height: calc(100vh - 100px);
   }
 }

@@ -4,7 +4,7 @@ import { twMerge } from 'tailwind-merge';
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
-const bodyClass = twMerge(inter.className, 'main-bg');
+const bodyClass = twMerge(inter.className);
 
 export const metadata: Metadata = {
   title: "Create Next App",
