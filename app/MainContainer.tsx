@@ -3,7 +3,7 @@
 import { useRouter } from "next/navigation";
 import { MouseEvent, useEffect, useMemo, useState } from "react"
 import { twMerge } from "tailwind-merge";
-import Menu from "./appComponents/Menu";
+import Menu from "./components/Menu";
 
 const layouts = {
   big: {

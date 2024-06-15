@@ -1,6 +1,6 @@
 import React from 'react';
 import { Metadata } from 'next'
-import LoadableContent from '@/sharedComponents/LoadableContent';
+import LoadableContent from '@/app/sharedComponents/LoadableContent';
 
 export const metadata: Metadata = {
   title: 'Derek Surguy | Resume',
