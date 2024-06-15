@@ -1,10 +1,10 @@
 import React from 'react';
-import MainContainer from './MainContainer';
+import LoadableContent from '../sharedComponents/LoadableContent';
 
 export default function BlogPage() {
   return (
-    <MainContainer>
+    <LoadableContent>
       <div className="main-min-size">Test</div>
-    </MainContainer>
+    </LoadableContent>
   )
 }

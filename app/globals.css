@@ -43,7 +43,7 @@ body {
   }
 
   .main-home.transition {
-    transition: clip-path 0.5s ease;
+    transition: clip-path 0.25s ease;
     clip-path: polygon(
       21.875vw 50px,
       78.125vw 50px,

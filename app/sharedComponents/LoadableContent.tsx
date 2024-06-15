@@ -7,7 +7,7 @@ type Props = {
   children: React.ReactNode | React.ReactNode[]
 }
 
-export default function MainContainer({ children }: Props) {
+export default function LoadableContent({ children }: Props) {
   const [loaded, setLoaded] = useState(false);
   const [fadeComplete, setFadeComplete] = useState(false);
   const baseMainClass = "w-[56.25vw] mt-[50px] mx-auto bg-neutral-50 transition-opacity opacity-0 duration-200"
