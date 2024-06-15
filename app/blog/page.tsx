@@ -1,10 +1,15 @@
 import React from 'react';
-import LoadableContent from '../sharedComponents/LoadableContent';
+import { Metadata } from 'next'
+import LoadableContent from '@/sharedComponents/LoadableContent';
+
+export const metadata: Metadata = {
+  title: 'Derek Surguy | Projects',
+}
 
 export default function BlogPage() {
-  return (
+  return <>
     <LoadableContent>
       <div className="main-min-size">Test</div>
     </LoadableContent>
-  )
+  </>
 }
