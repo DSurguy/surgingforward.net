@@ -63,4 +63,13 @@ body {
   .main-min-size {
     min-height: calc(100vh - 100px);
   }
+  .headshot {
+    background-size: cover;
+    background-image: url("/face-low.jpg");
+    background-image: image-set(
+      url("/face-low.jpg") 1x,
+      url("/face-regular.jpg") 2x,
+      url("/face-retina.jpg") 3x
+    );
+  }
 }
