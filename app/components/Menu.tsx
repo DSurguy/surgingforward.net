@@ -2,15 +2,21 @@
 
 import Link from "next/link"
 import { MouseEvent } from "react"
+import { twMerge } from "tailwind-merge"
 
 type Props = {
-  onMenuItemClick: (e: MouseEvent<HTMLAnchorElement>, target: string) => void
+  onMenuItemClick: (e: MouseEvent<HTMLAnchorElement>, target: string) => void;
+  className?: string;
 }
+
 const itemClass = "ml-12 text-black hover:text-gray-700 hover:underline transition-colors duration-200"
 
-export default function Menu({ onMenuItemClick }: Props) {
+const baseClassName = "flex justify-end";
+
+export default function Menu({ className, onMenuItemClick }: Props) {
+  const mergedClassName = twMerge(baseClassName, className)
   return (
-    <nav className="flex p-8 pr-12 w-[720px] justify-end">
+    <nav className={mergedClassName}>
       <Link href="/blog" passHref legacyBehavior>
         <a className={itemClass} onClick={e => (onMenuItemClick(e, '/blog'))}>Blog</a>
       </Link>

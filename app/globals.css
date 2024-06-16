@@ -35,15 +35,16 @@ body {
 }
 
 @layer components {
-  .main-home {
-    clip-path: polygon(0 0, 720px 0, 540px 100%, 0 100%);
-    transition: clip-path 0.5s ease;
-    width: 100vw;
-    height: 100vh;
+  .main-bg {
+    clip-path: polygon(
+      0 0,
+      720px 0,
+      540px 100%,
+      0 100%
+    );
   }
 
-  .main-home.transition {
-    transition: clip-path 0.25s ease;
+  .main-bg.navigating {
     clip-path: polygon(
       21.875vw 50px,
       78.125vw 50px,
