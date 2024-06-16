@@ -32,7 +32,7 @@ export default function MainComponent() {
   }, [transitionTo])
   
   const mainContent = <div className="relative z-10 min-h-screen">
-    <Menu onMenuItemClick={handleClick} className="p-8 pr-12 w-[720px]" />
+    <Menu onMenuItemClick={handleClick} className="p-8 pr-12 w-[800px]" />
     <div className="ml-20">
       <h1 className="text-4xl font-semibold pb-8">Derek Surguy</h1>
       <div className="w-[500px]">

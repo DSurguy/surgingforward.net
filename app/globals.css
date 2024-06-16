@@ -39,7 +39,7 @@ body {
   .main-bg {
     clip-path: polygon(
       0 0,
-      720px 0,
+      800px 0,
       600px 100%,
       0 100%
     );
