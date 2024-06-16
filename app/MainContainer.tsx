@@ -38,7 +38,7 @@ export default function MainComponent() {
       <div className="w-[500px]">
         <p className="pb-4">Welcome!</p>
         <p className="pb-4">
-          <span>I'm an expert front-end software engineer, competent in</span>
+          <span>I&apos;m an expert front-end software engineer, competent in</span>
           <span className="block">full-stack development, leading engineering teams</span>
           <span className="block">and shipping maintainable software.</span>
         </p>
