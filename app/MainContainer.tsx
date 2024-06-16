@@ -6,6 +6,7 @@ import { twMerge } from "tailwind-merge";
 import Menu from "./components/Menu";
 import MailIcon from "./sharedComponents/icons/MailIcon";
 import GithubIcon from "./sharedComponents/icons/GithubIcon";
+import ServerSideDate from "./sharedComponents/ServerSideDate";
 
 const backgroundBaseClass = "main-bg bg-neutral-50 w-screen h-screen fixed top-0 left-0 z-0 transition-[clip-path] duration-200 ease-out"
 
@@ -30,7 +31,7 @@ export default function MainComponent() {
     }
   }, [transitionTo])
   
-  const mainContent = <div className="relative z-10">
+  const mainContent = <div className="relative z-10 min-h-screen">
     <Menu onMenuItemClick={handleClick} className="p-8 pr-12 w-[720px]" />
     <div className="ml-20">
       <h1 className="text-4xl font-semibold pb-8">Derek Surguy</h1>
@@ -66,11 +67,16 @@ export default function MainComponent() {
           <p>Update summary</p>
         </div>
       </div>
+      <div className="h-32"></div>
+      <div className="w-[600px] absolute bottom-2 left-2">
+        <div>© 2024-<ServerSideDate format="year" /> Derek Surguy</div>
+        <div>Created with Next.JS and deployed on Vercel</div>
+      </div>
     </div>
   </div>
 
   return (  
-    <main>
+    <main className="overflow-x-hidden">
       {!transitionTo && mainContent}
       <div className={backgroundClassName}></div>
     </main>

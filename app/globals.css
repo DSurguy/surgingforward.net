@@ -26,6 +26,7 @@ body {
   background-attachment: fixed;
   height: 100vh;
   width: 100vw;
+  overflow-x: hidden;
 }
 
 @layer utilities {
@@ -39,7 +40,7 @@ body {
     clip-path: polygon(
       0 0,
       720px 0,
-      540px 100%,
+      600px 100%,
       0 100%
     );
   }
