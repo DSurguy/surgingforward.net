@@ -8,7 +8,7 @@ import MailIcon from "./sharedComponents/icons/MailIcon";
 import GithubIcon from "./sharedComponents/icons/GithubIcon";
 import ServerSideDate from "./sharedComponents/ServerSideDate";
 
-const backgroundBaseClass = "main-bg bg-neutral-50 w-screen h-screen fixed top-0 left-0 z-0 transition-[clip-path] duration-200 ease-out"
+const backgroundBaseClass = "main-bg bg-neutral-50 dark:bg-gray-900 w-screen h-screen fixed top-0 left-0 z-0 transition-[clip-path] duration-200 ease-out"
 
 export default function MainComponent() {
   const router = useRouter();
@@ -32,7 +32,9 @@ export default function MainComponent() {
   }, [transitionTo])
   
   const mainContent = <div className="relative z-10 min-h-screen">
-    <Menu onMenuItemClick={handleClick} className="p-8 pr-12 w-[800px]" />
+    <div className="pt-4 pb-8">
+      <Menu onMenuItemClick={handleClick} className="mr-8 p-2 pl-0 w-[760px]" />
+    </div>
     <div className="ml-20">
       <h1 className="text-4xl font-semibold pb-8">Derek Surguy</h1>
       <div className="w-[500px]">
@@ -55,7 +57,7 @@ export default function MainComponent() {
           <MailIcon className="mr-4" />
         </div>
       </div>
-      <div className="w-[1000px] h-[332px] shadow-lg bg-white rounded-md">
+      <div className="w-[1000px] h-[332px] shadow-lg bg-white dark:bg-gray-700 rounded-md">
         <div>
           <h2>Latest Blog</h2>
           <h3>Blog Title</h3>

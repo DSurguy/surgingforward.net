@@ -9,9 +9,9 @@ type Props = {
   className?: string;
 }
 
-const itemClass = "ml-12 text-black hover:text-gray-700 hover:underline transition-colors duration-200"
+const itemClass = "ml-8 mr-4 text-black dark:text-white hover:text-gray-700 dark:hover:text-gray-500 hover:underline transition-colors duration-200"
 
-const baseClassName = "flex justify-end";
+const baseClassName = "flex justify-end bg-gray-200 dark:bg-gray-800 [clip-path:polygon(0 0, 100% 0, 90% 100%, 0% 100%)]";
 
 export default function Menu({ className, onMenuItemClick }: Props) {
   const mergedClassName = twMerge(baseClassName, className)
