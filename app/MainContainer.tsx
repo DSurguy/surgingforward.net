@@ -1,21 +1,23 @@
 'use client'
 
 import { useRouter } from "next/navigation";
-import { MouseEvent, useEffect, useMemo, useState } from "react"
+import { MouseEvent, Suspense, useEffect, useMemo, useState } from "react"
 import { twMerge } from "tailwind-merge";
 import Menu from "./components/Menu";
 import MailIcon from "./sharedComponents/icons/MailIcon";
 import GithubIcon from "./sharedComponents/icons/GithubIcon";
 import ServerSideDate from "./sharedComponents/ServerSideDate";
+import BlogSummaryComponent from "./components/BlogSummary";
+import { BlogSummary } from "@/types";
 
 const backgroundBaseClass = "main-bg bg-neutral-50 dark:bg-gray-900 w-screen h-screen fixed top-0 left-0 z-0 transition-[clip-path] duration-200 ease-out"
 
 type Props = {
-  blogSummary: React.ReactNode,
-  projectSummary: React.ReactNode
+  latestBlogContent: BlogSummary,
+  latestProjectContent: {}
 }
 
-export default function MainComponent({ blogSummary, projectSummary }: Props) {
+export default function MainComponent({ latestBlogContent, latestProjectContent }: Props) {
   const router = useRouter();
   const [transitionTo, setTransitionTo] = useState<null | string>(null);
   
@@ -63,8 +65,9 @@ export default function MainComponent({ blogSummary, projectSummary }: Props) {
         </div>
       </div>
       <div className="w-[1000px] h-[332px] shadow-lg bg-white dark:bg-gray-700 rounded-md flex">
-        {blogSummary}
-        {projectSummary}
+        <Suspense fallback={"hello"}>
+          <BlogSummaryComponent data={latestBlogContent} onLinkClick={handleClick} className="basis-1/2 p-4" />
+        </Suspense>
       </div>
       <div className="h-32"></div>
       <div className="w-[600px] absolute bottom-2 left-2">

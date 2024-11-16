@@ -28,7 +28,7 @@ export default function LoadableContent({ children }: Props) {
   }, [children])
 
   return <div className="w-screen h-screen overflow-x-hidden overflow-y-auto">
-    <div className="main-placeholder"></div>
+    <div className="main-placeholder bg-neutral-50"></div>
     <main className={mainClass}>
       {children}
     </main>

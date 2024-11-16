@@ -3,6 +3,7 @@ import { join } from "path"
 import { Metadata } from "next"
 import { MDXRemote } from 'next-mdx-remote/rsc'
 import matter from 'gray-matter'
+import LoadableContent from "@/app/sharedComponents/LoadableContent"
 
 const postDir = join(process.cwd(), "_blogPosts");
 
@@ -17,7 +18,11 @@ export default async function BlogPost(props: StaticParams) {
 
   const { content } = matter(readFileSync(join(postDir, `${slug}.mdx`)))
   
-  return <MDXRemote source={content} />
+  return (
+    <LoadableContent>
+      <MDXRemote source={content} />
+    </LoadableContent>
+  )
 }
 
 export async function generateMetadata(props: StaticParams): Promise<Metadata> {
