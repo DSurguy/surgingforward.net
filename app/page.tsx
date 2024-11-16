@@ -1,5 +1,6 @@
 import { Metadata } from 'next'
 import MainComponent from "./MainContainer";
+import BlogSummary from './components/BlogSummary';
  
 export const metadata: Metadata = {
   title: 'Derek Surguy | Home',
@@ -7,6 +8,9 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return <>
-    <MainComponent />
+    <MainComponent
+      blogSummary={<BlogSummary className="p-4" />}
+      projectSummary={<BlogSummary className="p-4" />}
+    />
   </>
 }

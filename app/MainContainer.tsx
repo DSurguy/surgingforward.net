@@ -10,7 +10,12 @@ import ServerSideDate from "./sharedComponents/ServerSideDate";
 
 const backgroundBaseClass = "main-bg bg-neutral-50 dark:bg-gray-900 w-screen h-screen fixed top-0 left-0 z-0 transition-[clip-path] duration-200 ease-out"
 
-export default function MainComponent() {
+type Props = {
+  blogSummary: React.ReactNode,
+  projectSummary: React.ReactNode
+}
+
+export default function MainComponent({ blogSummary, projectSummary }: Props) {
   const router = useRouter();
   const [transitionTo, setTransitionTo] = useState<null | string>(null);
   
@@ -57,17 +62,9 @@ export default function MainComponent() {
           <MailIcon className="mr-4" />
         </div>
       </div>
-      <div className="w-[1000px] h-[332px] shadow-lg bg-white dark:bg-gray-700 rounded-md">
-        <div>
-          <h2>Latest Blog</h2>
-          <h3>Blog Title</h3>
-          <p>Blog summary</p>
-        </div>
-        <div>
-          <h2>Latest Project Update</h2>
-          <h3>Project Title</h3>
-          <p>Update summary</p>
-        </div>
+      <div className="w-[1000px] h-[332px] shadow-lg bg-white dark:bg-gray-700 rounded-md flex">
+        {blogSummary}
+        {projectSummary}
       </div>
       <div className="h-32"></div>
       <div className="w-[600px] absolute bottom-2 left-2">

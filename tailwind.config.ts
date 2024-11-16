@@ -20,6 +20,8 @@ const config: Config = {
       "bg-dark": "rgb(27, 41, 34)"
     }
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/typography')
+  ],
 };
 export default config;
