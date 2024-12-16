@@ -44,15 +44,6 @@ export default function MainComponent({ latestBlogContent, latestProjectContent 
     </div>
     <div className="ml-20">
       <h1 className="text-4xl font-semibold pb-8">Derek Surguy</h1>
-      <div className="w-[500px]">
-        <p className="pb-4">Welcome!</p>
-        <p className="pb-4">
-          <span>I&apos;m an expert front-end software engineer, competent in</span>
-          <span className="block">full-stack development, leading engineering teams</span>
-          <span className="block">and shipping maintainable software.</span>
-        </p>
-        <p className="pb-8">I make stuff and put it on the internet sometimes.</p>
-      </div>
       <div className="relative h-[240px] mb-8">
         <div className="headshot absolute w-[240px] h-[240px] rounded-full border-teal-800 border-2 z-10"></div>
         <div className="bg-teal-800 text-white flex h-[32px] w-[350px] rounded-r-full absolute z-0 bottom-[40px] left-[150px] justify-end items-center">
@@ -64,7 +55,16 @@ export default function MainComponent({ latestBlogContent, latestProjectContent 
           <MailIcon className="mr-4" />
         </div>
       </div>
-      <div className="w-[1000px] h-[332px] shadow-lg bg-white dark:bg-gray-700 rounded-md flex">
+      <div className="w-[500px]">
+        <p className="pb-4">Welcome!</p>
+        <p className="pb-4">
+          <span>I&apos;m an expert front-end software engineer, competent in</span>
+          <span className="block">full-stack development, leading engineering teams</span>
+          <span className="block">and shipping maintainable software.</span>
+        </p>
+        <p className="pb-8">I make stuff and put it on the internet sometimes.</p>
+      </div>
+      <div className="w-[1000px] h-[332px] shadow-lg bg-white dark:bg-teal-900 text-white rounded-md flex">
         <Suspense fallback={"hello"}>
           <BlogSummaryComponent data={latestBlogContent} onLinkClick={handleClick} className="basis-1/2 p-4" />
         </Suspense>
@@ -72,7 +72,7 @@ export default function MainComponent({ latestBlogContent, latestProjectContent 
       <div className="h-32"></div>
       <div className="w-[600px] absolute bottom-2 left-2">
         <div>© 2024-<ServerSideDate format="year" /> Derek Surguy</div>
-        <div>Created with Next.JS and deployed on Vercel</div>
+        <div>Created with Next.JS</div>
       </div>
     </div>
   </div>
