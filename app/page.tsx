@@ -2,7 +2,7 @@
 
 import { Metadata } from 'next'
 import MainComponent from "./MainContainer";
-import { BlogSummary, FrontMatter } from '@/types';
+import { BlogSummary, FrontMatter } from '@/app/types';
 import { readdirSync, readFileSync } from 'fs';
 import { join } from 'path';
 import matter from 'gray-matter';

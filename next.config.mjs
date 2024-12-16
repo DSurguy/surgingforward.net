@@ -1,6 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  transpilePackages: ['next-mdx-remote']
+  compress: false,
+  output: 'standalone',
+  transpilePackages: ['next-mdx-remote'],
 };
 
 export default nextConfig;

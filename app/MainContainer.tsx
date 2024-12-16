@@ -8,7 +8,7 @@ import MailIcon from "./sharedComponents/icons/MailIcon";
 import GithubIcon from "./sharedComponents/icons/GithubIcon";
 import ServerSideDate from "./sharedComponents/ServerSideDate";
 import BlogSummaryComponent from "./components/BlogSummary";
-import { BlogSummary } from "@/types";
+import { BlogSummary } from "@/app/types";
 
 const backgroundBaseClass = "main-bg bg-neutral-50 dark:bg-gray-900 w-screen h-screen fixed top-0 left-0 z-0 transition-[clip-path] duration-200 ease-out"
 
