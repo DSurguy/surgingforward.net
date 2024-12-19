@@ -1,0 +1,19 @@
+services:
+  web:
+    build: .
+    ports:
+      - '3000:3000'
+    environment:
+      - NODE_ENV=production
+    volumes:
+      - sqlite_data:/var/lib/surgingforward.net/data/sqlite
+    networks:
+      - my_network
+
+volumes:
+  sqlite_data:
+
+networks:
+  my_network:
+    name: my_network
+    driver: bridge
