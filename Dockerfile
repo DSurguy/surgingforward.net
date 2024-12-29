@@ -1,7 +1,4 @@
-FROM node:lts-alpine AS base
-ENV PNPM_HOME="/pnpm"
-ENV PATH="$PNPM_HOME:$PATH"
-RUN corepack enable
+FROM oven/bun:latest AS base
 COPY .env .env
 COPY env.docker.sh env.docker.sh
 RUN ./env.docker.sh
@@ -9,14 +6,14 @@ RUN echo $GITHUB_WEBHOOK_SECRET
 
 FROM base AS deps
 WORKDIR /app
-COPY package.json pnpm-lock.yaml ./
-RUN pnpm i --frozen-lockfile
+COPY package.json bun.lockb ./
+RUN bun install
 
 FROM base AS builder
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
-RUN pnpm build
+RUN bun run build
 
 FROM base AS runner
 WORKDIR /app
@@ -26,4 +23,4 @@ COPY --from=builder /app/.next/standalone ./
 COPY --from=builder /app/.next/static ./.next/static
 
 EXPOSE 3000
-CMD ["node", "server.js"]
+CMD ["bun", "server.js"]
