@@ -1,14 +1,15 @@
 'use client'
 
 import { useRouter } from "next/navigation";
-import { MouseEvent, Suspense, useEffect, useMemo, useState } from "react"
+import type { MouseEvent } from 'react';
+import { Suspense, useEffect, useMemo, useState } from "react"
 import { twMerge } from "tailwind-merge";
 import Menu from "./components/Menu";
 import MailIcon from "./sharedComponents/icons/MailIcon";
 import GithubIcon from "./sharedComponents/icons/GithubIcon";
 import ServerSideDate from "./sharedComponents/ServerSideDate";
 import BlogSummaryComponent from "./components/BlogSummary";
-import { BlogSummary } from "@/app/types";
+import type { BlogSummary } from "@/types";
 
 const backgroundBaseClass = "main-bg bg-neutral-50 dark:bg-gray-900 w-screen h-screen fixed top-0 left-0 z-0 transition-[clip-path] duration-200 ease-out"
 
@@ -17,7 +18,7 @@ type Props = {
   latestProjectContent: {}
 }
 
-export default function MainComponent({ latestBlogContent, latestProjectContent }: Props) {
+export default function MainComponent({ latestBlogContent }: Props) {
   const router = useRouter();
   const [transitionTo, setTransitionTo] = useState<null | string>(null);
   

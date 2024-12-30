@@ -1,8 +1,8 @@
 'use server'
 
-import { Metadata } from 'next'
+import type { Metadata } from 'next'
 import MainComponent from "./MainContainer";
-import { BlogSummary, FrontMatter } from '@/app/types';
+import type { BlogSummary, FrontMatter } from '@/types';
 import { readdirSync, readFileSync } from 'fs';
 import { join } from 'path';
 import matter from 'gray-matter';
@@ -14,7 +14,7 @@ async function getLatestBlog(): Promise<BlogSummary> {
   let latestPost: BlogSummary | null = null;
   for( let file of files ) {
     const { data } = matter(readFileSync(join(process.cwd(), "_blogPosts", file)))
-    if (!latestPost || Date.parse(data.updateDate) > Date.parse(latestPost.updateDate)) {
+    if (!latestPost || Date.parse(data['updateDate']) > Date.parse(latestPost.updateDate)) {
       latestPost = {
         ...data as FrontMatter,
         slug: file.replace('.mdx', '')

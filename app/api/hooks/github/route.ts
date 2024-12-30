@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { Webhooks } from "@octokit/webhooks";
 
 const webhooks = new Webhooks({
-  secret: process.env.GITHUB_WEBHOOK_SECRET!,
+  secret: process.env['GITHUB_WEBHOOK_SECRET']!,
 });
 
 export async function POST(request: NextRequest) {

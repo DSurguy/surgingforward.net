@@ -3,7 +3,7 @@
 import Markdown from "react-markdown";
 import { twMerge } from "tailwind-merge";
 import Link from "next/link";
-import { BlogSummary } from "@/app/types";
+import type { BlogSummary } from "@/types";
 
 type Props = {
   className?: string;
