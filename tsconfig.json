@@ -37,7 +37,8 @@
       {
         "name": "next"
       }
-    ]
+    ],
+    "types": ["bun-types"]
   },
   "include": [
     "next-env.d.ts",

@@ -1,8 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   compress: false,
-  output: 'standalone',
   transpilePackages: ['next-mdx-remote'],
+  webpack: (config) => {
+    config.externals.push('bun:sqlite');
+    return config;
+},
 };
 
 export default nextConfig;
