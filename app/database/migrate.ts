@@ -2,11 +2,9 @@ import { promises as fs } from 'fs'
 import * as path from 'path';
 import { FileMigrationProvider, Migrator } from 'kysely'
 import colors from 'colors/safe';
-import { getDatabase } from '.';
+import { db } from '.';
 
 const migrationFolder = path.resolve(__dirname, 'migrations')
-
-const { db } = getDatabase();
 
 const migrator = new Migrator({
   db,
@@ -34,5 +32,3 @@ if (error) {
   console.error(error)
   process.exit(1)
 }
-
-// await done();
