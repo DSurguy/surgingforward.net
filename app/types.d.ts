@@ -9,6 +9,6 @@ export interface BlogSummary extends FrontMatter {
 }
 
 export interface PageProps {
-  params: { };
-  searchParams: Record<string, string | string[] | undefined>
+  params: Promise<{}>;
+  searchParams: Promise<Record<string, string | string[] | undefined>>
 }

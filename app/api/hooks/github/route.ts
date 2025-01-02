@@ -10,7 +10,6 @@ const webhooks = new Webhooks({
   secret: process.env['GITHUB_WEBHOOK_SECRET']!,
 });
 const disableValidation = getBooleanValue('DISABLE_WEBHOOK_SECRET');
-console.log(disableValidation)
 const toBody = (v: Object) => JSON.stringify(v, null, 2);
 
 export async function POST(request: NextRequest) {
