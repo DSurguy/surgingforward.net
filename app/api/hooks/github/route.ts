@@ -1,5 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Webhooks } from "@octokit/webhooks";
+import type { ReleaseEvent } from "@octokit/webhooks-types"
+import { db } from "~/app/database";
+import type { NewRelease } from "~/app/database/types";
 
 const webhooks = new Webhooks({
   secret: process.env['GITHUB_WEBHOOK_SECRET']!,
@@ -13,11 +16,44 @@ export async function POST(request: NextRequest) {
   if (!signature || !(await webhooks.verify(body, signature))) {
     return new NextResponse("Unauthorized", { status: 401 });
   }
+  
+  let releaseEvent: ReleaseEvent
+  try {
+    releaseEvent = JSON.parse(body);
+  } catch (e) {
+    return new NextResponse({
+      title: "Bad Request",
+      message: "Unable to parse JSON",
+      error: e
+    }, {
+      status: 400
+    })
+  }
+
+  const newRelease: NewRelease = {
+    id: releaseEvent.release.id,
+    html_url: releaseEvent.release.html_url,
+    name: releaseEvent.release.name,
+    body: releaseEvent.release.body,
+    publishedAt: releaseEvent.release.published_at!,
+    updatedAt: new Date().toISOString(),
+    repositoryId: releaseEvent.repository.id,
+    repositoryHtmlUrl: releaseEvent.repository.html_url
+  }
 
   try {
-    console.log(JSON.parse(body));
+    await db.insertInto('release')
+      .values(newRelease)
+      .execute()
   } catch (e) {
-    console.error(e);
+    console.error(e); // TODO: Create a logger
+    return new NextResponse({
+      title: "Internal Server Error",
+      message: "Unable to cache release to database",
+      error: e
+    }, {
+      status: 500
+    })
   }
 
   return new NextResponse(null, { status: 202 });
