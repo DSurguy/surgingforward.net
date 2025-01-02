@@ -7,3 +7,8 @@ export type FrontMatter = {
 export interface BlogSummary extends FrontMatter {
   slug: string;
 }
+
+export interface PageProps {
+  params: { };
+  searchParams: Record<string, string | string[] | undefined>
+}

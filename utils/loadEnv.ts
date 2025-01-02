@@ -1,6 +1,10 @@
 import { resolve } from 'path';
 import { homedir } from 'os';
 
+export const getValue = (key: string, fallback: string = "") => {
+  return process.env[key] || fallback;
+}
+
 export const getRequiredValue = (key: string) => {
   const rawValue = process.env[key];
   if( !rawValue ) throw Error(`${key} not present in env`);
@@ -23,4 +27,10 @@ export const getPathValue = (key: string) => {
   }
   
   return value;
+}
+
+// Supports explicitly "", "0" or "false" (any case) to represent false, otherwise if a value is present, it is treated as true
+export const getBooleanValue = (key: string) => {
+  let value = getValue(key, 'false').toLowerCase()
+  return !(["","0","false"].includes(value));
 }

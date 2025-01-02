@@ -8,6 +8,7 @@ export interface ReleaseTable {
   id: number;
   repositoryId: number;
   name: string;
+  tag: string;
   html_url: string;
   body: string;
   publishedAt: ColumnType<Date, string, string>;

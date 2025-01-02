@@ -1,23 +1,27 @@
 import type { Metadata } from 'next'
 import LoadableContent from '@/sharedComponents/LoadableContent';
 import { db } from '../database';
+import type { PageProps } from '../types';
+import { PAGE_SIZE } from './constants';
 
 export const metadata: Metadata = {
   title: 'Derek Surguy | Releases',
 }
 
-const getReleases = async () => {
-  const releases = await db
+const getReleases = async ({ page }: Record<string, string | string[] | undefined>) => {
+  let actualPage = Number(page);
+  if( isNaN(actualPage) ) actualPage = 0
+  return await db
     .selectFrom('release')
-    .orderBy('publishedAt')
+    .orderBy('publishedAt', 'desc')
     .selectAll()
+    .limit(PAGE_SIZE)
+    .offset(PAGE_SIZE * actualPage)
     .execute()
-  
-  return releases;
 }
 
-export default async function ReleasePage() {
-  const releases = await getReleases();
+export default async function ReleasePage({ searchParams }: PageProps) {
+  const releases = await getReleases(await searchParams);
 
   return <>
     <LoadableContent>

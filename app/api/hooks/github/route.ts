@@ -4,20 +4,25 @@ import type { ReleaseEvent } from "@octokit/webhooks-types"
 import { db } from "~/app/database";
 import type { NewRelease, UpdatedRelease } from "~/app/database/types";
 import { revalidatePath } from "next/cache";
+import { getBooleanValue } from "~/utils/loadEnv";
 
 const webhooks = new Webhooks({
   secret: process.env['GITHUB_WEBHOOK_SECRET']!,
 });
-
+const disableValidation = getBooleanValue('DISABLE_WEBHOOK_SECRET');
+console.log(disableValidation)
 const toBody = (v: Object) => JSON.stringify(v, null, 2);
 
 export async function POST(request: NextRequest) {
   const body = await request.text();
-  const headers = request.headers;
-  const signature = headers.get("x-hub-signature-256");
 
-  if (!signature || !(await webhooks.verify(body, signature))) {
-    return new NextResponse("Unauthorized", { status: 401 });
+  if( !disableValidation ) {
+    const headers = request.headers;
+    const signature = headers.get("x-hub-signature-256");
+
+    if (!signature || !(await webhooks.verify(body, signature))) {
+      return new NextResponse("Unauthorized", { status: 401 });
+    }
   }
   
   let releaseEvent: ReleaseEvent
@@ -59,6 +64,7 @@ export async function POST(request: NextRequest) {
       id: releaseEvent.release.id,
       html_url: releaseEvent.release.html_url,
       name: releaseEvent.release.name,
+      tag: releaseEvent.release.tag_name,
       body: releaseEvent.release.body,
       publishedAt: releaseEvent.release.published_at!,
       updatedAt: new Date().toISOString(),
@@ -86,6 +92,7 @@ export async function POST(request: NextRequest) {
       id: releaseEvent.release.id,
       html_url: releaseEvent.release.html_url,
       name: releaseEvent.release.name,
+      tag: releaseEvent.release.tag_name,
       body: releaseEvent.release.body,
       publishedAt: releaseEvent.release.published_at!,
       updatedAt: new Date().toISOString(),
