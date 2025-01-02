@@ -9,6 +9,8 @@ const webhooks = new Webhooks({
   secret: process.env['GITHUB_WEBHOOK_SECRET']!,
 });
 
+const toBody = (v: Object) => JSON.stringify(v, null, 2);
+
 export async function POST(request: NextRequest) {
   const body = await request.text();
   const headers = request.headers;
@@ -22,11 +24,11 @@ export async function POST(request: NextRequest) {
   try {
     releaseEvent = JSON.parse(body);
   } catch (e) {
-    return new NextResponse({
+    return new NextResponse(toBody({
       title: "Bad Request",
       message: "Unable to parse JSON",
       error: e
-    }, {
+    }), {
       status: 400
     })
   }
@@ -42,11 +44,11 @@ export async function POST(request: NextRequest) {
     isNew = !result?.id
   } catch (e) {
     console.error(e); // TODO: Create a logger
-    return new NextResponse({
+    return new NextResponse(toBody({
       title: "Internal Server Error",
       message: "Unable to cache release to database",
       error: e
-    }, {
+    }), {
       status: 500
     })
   }
@@ -70,11 +72,11 @@ export async function POST(request: NextRequest) {
         .execute()
     } catch (e) {
       console.error(e); // TODO: Create a logger
-      return new NextResponse({
+      return new NextResponse(toBody({
         title: "Internal Server Error",
         message: "Unable to cache release to database",
         error: e
-      }, {
+      }), {
         status: 500
       })
     }
@@ -97,11 +99,11 @@ export async function POST(request: NextRequest) {
         .execute()
     } catch (e) {
       console.error(e); // TODO: Create a logger
-      return new NextResponse({
+      return new NextResponse(toBody({
         title: "Internal Server Error",
         message: "Unable to cache release to database",
         error: e
-      }, {
+      }), {
         status: 500
       })
     }
