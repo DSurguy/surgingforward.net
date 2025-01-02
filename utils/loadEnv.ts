@@ -16,11 +16,11 @@ export const getCommaDelimitedValue = (key: string) => {
 
 export const getPathValue = (key: string) => {
   let value = getRequiredValue(key);
-  if( !value.startsWith('/') ) {
+  if( value.startsWith('~') ) {
+    value = value.replace(/^~/, homedir())
+  } else if( !value.startsWith('/') ) {
     value = resolve(__dirname, value);
   }
-  else if( value.startsWith('~') ) {
-    value = value.replace(/^~/, homedir())
-  }
+  
   return value;
 }
