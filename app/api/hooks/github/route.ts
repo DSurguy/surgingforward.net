@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { Webhooks } from "@octokit/webhooks";
 import type { ReleaseEvent } from "@octokit/webhooks-types"
 import { db } from "~/app/database";
-import type { NewRelease } from "~/app/database/types";
+import type { NewRelease, UpdatedRelease } from "~/app/database/types";
 import { revalidatePath } from "next/cache";
 
 const webhooks = new Webhooks({
@@ -31,21 +31,15 @@ export async function POST(request: NextRequest) {
     })
   }
 
-  const newRelease: NewRelease = {
-    id: releaseEvent.release.id,
-    html_url: releaseEvent.release.html_url,
-    name: releaseEvent.release.name,
-    body: releaseEvent.release.body,
-    publishedAt: releaseEvent.release.published_at!,
-    updatedAt: new Date().toISOString(),
-    repositoryId: releaseEvent.repository.id,
-    repositoryHtmlUrl: releaseEvent.repository.html_url
-  }
-
+  // Check if the release exists in the database
+  let isNew: boolean;
   try {
-    await db.insertInto('release')
-      .values(newRelease)
-      .execute()
+    const result = await db.selectFrom('release')
+      .select('id')
+      .where('id', '=', releaseEvent.release.id)
+      .executeTakeFirst();
+    
+    isNew = !result?.id
   } catch (e) {
     console.error(e); // TODO: Create a logger
     return new NextResponse({
@@ -55,6 +49,62 @@ export async function POST(request: NextRequest) {
     }, {
       status: 500
     })
+  }
+    
+  if (isNew) {
+    // new release - add it
+    const newRelease: NewRelease = {
+      id: releaseEvent.release.id,
+      html_url: releaseEvent.release.html_url,
+      name: releaseEvent.release.name,
+      body: releaseEvent.release.body,
+      publishedAt: releaseEvent.release.published_at!,
+      updatedAt: new Date().toISOString(),
+      repositoryId: releaseEvent.repository.id,
+      repositoryHtmlUrl: releaseEvent.repository.html_url
+    }
+  
+    try {
+      await db.insertInto('release')
+        .values(newRelease)
+        .execute()
+    } catch (e) {
+      console.error(e); // TODO: Create a logger
+      return new NextResponse({
+        title: "Internal Server Error",
+        message: "Unable to cache release to database",
+        error: e
+      }, {
+        status: 500
+      })
+    }
+  } else {
+    // pre-existing release, update it
+    const updatedRelease: UpdatedRelease = {
+      id: releaseEvent.release.id,
+      html_url: releaseEvent.release.html_url,
+      name: releaseEvent.release.name,
+      body: releaseEvent.release.body,
+      publishedAt: releaseEvent.release.published_at!,
+      updatedAt: new Date().toISOString(),
+      repositoryId: releaseEvent.repository.id,
+      repositoryHtmlUrl: releaseEvent.repository.html_url
+    }
+  
+    try {
+      await db.updateTable('release')
+        .set(updatedRelease)
+        .execute()
+    } catch (e) {
+      console.error(e); // TODO: Create a logger
+      return new NextResponse({
+        title: "Internal Server Error",
+        message: "Unable to cache release to database",
+        error: e
+      }, {
+        status: 500
+      })
+    }
   }
 
   revalidatePath('/releases');
