@@ -39,14 +39,14 @@ export async function POST(request: NextRequest) {
     const result = await db.selectFrom('release')
       .select('id')
       .where('id', '=', releaseEvent.release.id)
-      .executeTakeFirst();
+      .executeTakeFirst(); 
     
-    isNew = !result?.id
+    isNew = !(result?.id)
   } catch (e) {
     console.error(e); // TODO: Create a logger
     return new NextResponse(toBody({
       title: "Internal Server Error",
-      message: "Unable to cache release to database",
+      message: "Unable to determine if release exists in cache",
       error: e
     }), {
       status: 500
@@ -74,7 +74,7 @@ export async function POST(request: NextRequest) {
       console.error(e); // TODO: Create a logger
       return new NextResponse(toBody({
         title: "Internal Server Error",
-        message: "Unable to cache release to database",
+        message: "Unable to cache new release to database",
         error: e
       }), {
         status: 500
@@ -96,12 +96,15 @@ export async function POST(request: NextRequest) {
     try {
       await db.updateTable('release')
         .set(updatedRelease)
+        .where(build => 
+          build('id', '=', releaseEvent.release.id).and('repositoryId', '=', releaseEvent.repository.id)
+        )
         .execute()
     } catch (e) {
       console.error(e); // TODO: Create a logger
       return new NextResponse(toBody({
         title: "Internal Server Error",
-        message: "Unable to cache release to database",
+        message: "Unable to update release in cache",
         error: e
       }), {
         status: 500
