@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "migrate:new": "bun scripts/new-migration.ts"
+    "migrate:new": "bun scripts/new-migration.ts",
+    "migrate": "bun app/database/migrate.ts"
   },
   "dependencies": {
     "@octokit/webhooks": "^13.3.0",

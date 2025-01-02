@@ -8,6 +8,7 @@ const dbDir = process.env['DATABASE_DIR'];
 if( !dbDir ) throw new Error("Database path is required");
 const dbPath = path.resolve(dbDir, 'db.sqlite');
 
+console.log(`Creating and/or openining database at ${dbPath}`)
 const dialect = new BunSqliteDialect({
   database: new SQLite(dbPath),
 })
