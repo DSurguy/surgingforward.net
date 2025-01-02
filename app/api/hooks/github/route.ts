@@ -3,6 +3,7 @@ import { Webhooks } from "@octokit/webhooks";
 import type { ReleaseEvent } from "@octokit/webhooks-types"
 import { db } from "~/app/database";
 import type { NewRelease } from "~/app/database/types";
+import { revalidatePath } from "next/cache";
 
 const webhooks = new Webhooks({
   secret: process.env['GITHUB_WEBHOOK_SECRET']!,
@@ -55,6 +56,8 @@ export async function POST(request: NextRequest) {
       status: 500
     })
   }
+
+  revalidatePath('/releases');
 
   return new NextResponse(null, { status: 202 });
 }
