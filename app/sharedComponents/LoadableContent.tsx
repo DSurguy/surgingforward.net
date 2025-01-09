@@ -35,7 +35,7 @@ export default function LoadableContent({ children }: Props) {
         <Menu className="w-[380px] lg:w-[760px]" />
       </div>
       <div className="w-[95%] sm:w-[90%] md:w-[80%] lg:w-[920px] mx-auto relative">
-        <div className="z-[-1] absolute top-0 left-0 right-0 bottom-0 bg-neutral-50"></div>
+        <div className="z-[-1] absolute top-0 left-0 right-0 bottom-0 bg-neutral-50 dark:bg-gray-900"></div>
         <main className={mainClass}>{children}</main>
       </div>
       <div className="w-[95%] sm:w-[90%] md:w-[80%] lg:w-[920px] bg-neutral-50 dark:bg-gray-900 mx-auto p-2 relative z-10">
