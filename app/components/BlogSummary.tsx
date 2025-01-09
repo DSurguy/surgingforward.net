@@ -12,7 +12,7 @@ type Props = {
 }
 
 export default function BlogSummaryComponent({ className, data, onLinkClick }: Props) {
-  const finalClassName = twMerge("prose dark:prose-invert basis-1/2", className)
+  const finalClassName = twMerge("prose dark:prose-invert", className)
 
   return (
     <article className={finalClassName}>

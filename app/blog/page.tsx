@@ -6,9 +6,7 @@ export const metadata: Metadata = {
 }
 
 export default function BlogPage() {
-  return <>
-    <LoadableContent>
-      <div className="main-min-size">Test</div>
-    </LoadableContent>
-  </>
+  return <LoadableContent>
+    <div>Test</div>
+  </LoadableContent>
 }

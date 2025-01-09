@@ -26,8 +26,8 @@ export default async function ReleasePage({ searchParams }: PageProps) {
 
   return <>
     <LoadableContent>
-      <div className="main-min-size p-4">{
-        releases.map(release => (<article key={`${release.repositoryId}.${release.id}`} className="mb-8">
+      <div className="p-4">{
+        releases.map(release => (<article key={`${release.repositoryId}.${release.id}`} className="mb-12">
           <div className="border-b-2 border-slate-200 flex justify-between items-end">
             <a className="font-mono mr-2 text-sm text-slate-700" href={release.repositoryHtmlUrl}>
               <span>{release.repositoryHtmlUrl}</span>

@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 export default function ResumePage() {
   return <>
     <LoadableContent>
-      <div className="main-min-size">Test</div>
+      <div>Test</div>
     </LoadableContent>
   </>
 }
