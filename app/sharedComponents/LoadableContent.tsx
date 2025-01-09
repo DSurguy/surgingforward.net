@@ -12,7 +12,7 @@ type Props = {
 export default function LoadableContent({ children }: Props) {
   const [loaded, setLoaded] = useState(false);
   const [, setFadeComplete] = useState(false);
-  const baseMainClass = "relative mx-auto bg-neutral-50 transition-opacity opacity-0 duration-200"
+  const baseMainClass = "relative mx-auto bg-neutral-50 dark:bg-gray-900 transition-opacity opacity-0 duration-200"
 
   const mainClass = useMemo(() => {
     return loaded ? twMerge(baseMainClass, 'opacity-1') : baseMainClass;
