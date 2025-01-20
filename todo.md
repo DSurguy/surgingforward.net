@@ -1,7 +1,7 @@
-- [ ] Releases per-project
+- [x] Releases per-project
 - [ ] At least three projects
 - [ ] Website blog post
-- [ ] Contact page
+- [x] Contact page
 - [ ] Metadata
 - [ ] View Transitions
 - [ ] Testing

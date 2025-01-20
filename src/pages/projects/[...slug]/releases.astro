@@ -1,9 +1,8 @@
 ---
 import { type CollectionEntry, getCollection } from 'astro:content';
 import ProjectPage from '@/layouts/ProjectPage.astro';
-
-import * as projectMdxComponents from '@/components/react/ProjectMdxComponents'
 import ProjectHeader from '@/components/ProjectHeader.astro';
+import ProjectReleases from '@/components/ProjectReleases.astro';
 
 export async function getStaticPaths() {
   const posts = await getCollection('project');
@@ -23,5 +22,5 @@ const post = Astro.props;
     <p class="pb-2">The latest 5 releases published on github are included here.</p>
     <p class="pb-2">To see all releases and explore the code, please visit <a href={post.data.repositoryUrl} class="underline">{post.data.repositoryUrl}</a></p>
   </div>
-  <p>TODO: Get dynamic content from API</p>
+  <ProjectReleases server:defer repositoryUrl={post.data.repositoryUrl} />
 </ProjectPage>
