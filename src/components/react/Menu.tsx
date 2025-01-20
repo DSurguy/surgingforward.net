@@ -14,7 +14,6 @@ export default function Menu({ className, onMenuItemClick }: Props) {
   const mergedClassName = twMerge(baseClassName, className);
   
   const handleMenuClick = (e: MouseEvent<HTMLAnchorElement>, link: string) => {
-    console.log("click");
     if( onMenuItemClick ) onMenuItemClick(e, link);
   }
 
