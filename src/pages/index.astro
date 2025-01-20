@@ -13,8 +13,6 @@ import Headshot from '@/assets/face-regular.jpg'
 import FormattedDate from '@/components/FormattedDate.astro';
 import Footer from '@/components/Footer.astro';
 
-const year = new Date().getFullYear();
-
 const latestPosts = (await getCollection('blog')).sort(
 	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 ).slice(0, 2);
