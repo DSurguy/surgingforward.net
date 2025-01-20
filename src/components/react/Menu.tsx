@@ -19,10 +19,10 @@ export default function Menu({ className, onMenuItemClick }: Props) {
 
   return (
     <nav className={mergedClassName}>
-      <a href="/blog" className={itemClass} onClick={e => (handleMenuClick(e, '/blog'))}>Blog</a>
-      <a href="/resume" className={itemClass} onClick={e => (handleMenuClick(e, '/resume'))}>Resume</a>
-      <a href="/projects" className={itemClass} onClick={e => (handleMenuClick(e, '/projects'))}>Projects</a>
-      <a href="/contact" className={itemClass} onClick={e => (handleMenuClick(e, '/contact'))}>Contact</a>
+      <a href="/blog" data-astro-prefetch="load" className={itemClass} onClick={e => (handleMenuClick(e, '/blog'))}>Blog</a>
+      <a href="/resume" data-astro-prefetch="load" className={itemClass} onClick={e => (handleMenuClick(e, '/resume'))}>Resume</a>
+      <a href="/projects" data-astro-prefetch="load" className={itemClass} onClick={e => (handleMenuClick(e, '/projects'))}>Projects</a>
+      <a href="/contact" data-astro-prefetch="load" className={itemClass} onClick={e => (handleMenuClick(e, '/contact'))}>Contact</a>
     </nav>
   )
 }

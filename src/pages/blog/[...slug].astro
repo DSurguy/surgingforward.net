@@ -1,7 +1,7 @@
 ---
 import { type CollectionEntry, getCollection, render } from 'astro:content';
-import BlogPage from '../../layouts/BlogPage.astro';
-import * as blogMdxComponents from '../../components/react/BlogMdxComponents'
+import BlogPage from '@/layouts/BlogPage.astro';
+import * as blogMdxComponents from '@/components/react/BlogMdxComponents'
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');

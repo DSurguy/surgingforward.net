@@ -13,7 +13,7 @@ export default defineConfig({
   integrations: [mdx(), react(), sitemap(), tailwind()],
   outDir: './dist',
   cacheDir: './cache',
-
+  prefetch: true,
   adapter: node({
     mode: 'standalone',
   }),
