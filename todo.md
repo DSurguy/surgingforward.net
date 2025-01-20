@@ -1,0 +1,9 @@
+- [ ] Releases per-project
+- [ ] At least three projects
+- [ ] Website blog post
+- [ ] Contact page
+- [ ] Metadata
+- [ ] View Transitions
+- [ ] Testing
+- [ ] Deployment Strategy (docker-compose?)
+- [ ] Go-Live

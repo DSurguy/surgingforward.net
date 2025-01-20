@@ -18,7 +18,7 @@ const post = Astro.props;
 const { Content } = await render(post);
 ---
 
-<ProjectPage {...post.data}>
+<ProjectPage {...post.data} title={`Project: ${post.data.title}`}>
   <ProjectHeader title={post.data.title} projectId={post.id} />
   <div class="p-4 pb-16">
 	  <Content components={{ ...projectMdxComponents }} />

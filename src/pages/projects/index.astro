@@ -5,11 +5,11 @@ import ContentPage from "@/layouts/ContentPage.astro";
 const posts = (await getCollection('project'));
 ---
 
-<ContentPage title="Derek Surguy | Projects" description="A curated list of my software projects">
+<ContentPage title="Surging Forward | Projects" description="A curated list of my software projects">
   <div class="p-4">
     <h1 class="text-3xl">Projects</h1>
     <p class="mt-2">I&apos;ve included a selection of my personal projects below, please explore and click into a project to learn more about it.</p>
-    <p class="mt-2 mb-4">Feel free to browse <a href="https://github.com/DSurguy" class="underline">my github</a> for more raw code and things that were too silly or bad to discuss here.</p>
+    <p class="mt-2 mb-4">Feel free to browse <a href="https://github.com/DSurguy" class="underline">my github</a> for everything else.</p>
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
       {posts.map((post) => <a
         class="border-2 border-gray-200 min-h-24 p-2"
