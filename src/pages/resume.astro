@@ -1,0 +1,35 @@
+---
+import { Image } from 'astro:assets';
+import  * as blogComponents from '../components/react/BlogMdxComponents';
+import { frontmatter, Content } from '../content/standalone/resume.mdx'
+
+import ContentPage from '../layouts/ContentPage.astro';
+import GithubIcon from '../components/react/icons/GithubIcon'
+import MailIcon from '../components/react/icons/MailIcon'
+
+import Headshot from '../assets/face-regular.jpg'
+---
+
+<ContentPage title={frontmatter.title} description={frontmatter.description}>
+  <div class="relative h-[160px] mb-2 m-8">
+    <div class="absolute w-[160px] h-[160px] rounded-full bg-teal-800 border-teal-800 border-2 z-20 overflow-hidden">
+      <Image src={Headshot} alt="A headshot of myself" />
+    </div>
+    <div class="bg-teal-800 text-white text-2xl flex h-[40px] w-[250px] rounded-r-full absolute z-10 top-0 left-[80px] justify-end items-center">
+      <h1 class="mr-4 mt-[-2px]">Derek Surguy</h1>
+    </div>
+    <div class="bg-teal-800 text-white flex h-[32px] w-[320px] rounded-r-full absolute z-10 bottom-[40px] left-[120px] justify-end items-center">
+      <a href="https://github.com/DSurguy" class="underline mr-2 mt-[-2px]">https://github.com/DSurguy</a>
+      <GithubIcon className="mr-4" />
+    </div>
+    <div class="bg-teal-800 text-white flex h-[32px] w-[320px] rounded-r-full absolute z-10 bottom-0 left-[80px] justify-end items-center">
+      <a href="mailto:Surguy.Derek@gmail.com" class="underline mr-2 mt-[-2px]">Surguy.Derek@gmail.com</a>
+      <MailIcon className="mr-4" />
+    </div>
+  </div>
+  <div class="p-4">
+    <Content components={{
+      ...blogComponents
+    }} />
+  </div>
+</ContentPage>
