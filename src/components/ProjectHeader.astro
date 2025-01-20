@@ -1,0 +1,17 @@
+---
+import { twMerge } from 'tailwind-merge';
+const { url } = Astro.request;
+const { title, projectId } = Astro.props;
+
+const isReleases = url.endsWith('releases');
+const getLinkClass = (shouldBeReleases: boolean) => 
+  twMerge('basis-1/2 text-center py-2', shouldBeReleases === isReleases ? 'bg-slate-100 border-b-2 border-teal-500' : 'border-b-2')
+---
+
+<div>
+  <h1 class="text-3xl p-4">{title}</h1>
+  <nav class="flex">
+    <a href={`/projects/${projectId}`} class={getLinkClass(false)}>About</a>
+    <a href={`/projects/${projectId}/releases`} class={getLinkClass(true)}>Releases</a>
+  </nav>
+</div>
