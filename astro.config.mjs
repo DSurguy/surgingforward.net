@@ -24,5 +24,10 @@ export default defineConfig({
     schema: {
       GITHUB_TOKEN: envField.string({ context: "server", access: "secret" })
     }
+  },
+  markdown: {
+    shikiConfig: {
+      theme: 'github-dark'
+    }
   }
 });
