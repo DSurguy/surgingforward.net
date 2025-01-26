@@ -1,3 +1,4 @@
+# Current
 - [x] Releases per-project
 - [ ] At least three projects
 - [ ] Website blog post
@@ -7,3 +8,6 @@
 - [ ] Testing
 - [ ] Deployment Strategy (docker-compose?)
 - [ ] Go-Live
+
+# Next
+- [ ] Cache releases in memory / db

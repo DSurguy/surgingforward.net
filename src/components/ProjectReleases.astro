@@ -11,7 +11,7 @@ const { repositoryUrl } = Astro.props;
 
 const queryParams = new URLSearchParams();
 queryParams.set("page", "1");
-queryParams.set("per_page", "5")
+queryParams.set("per_page", "5");
 
 const request = new Request(`${repositoryUrl.replace('https://github.com', 'https://api.github.com/repos')}/releases?${queryParams.toString()}`, {
   method: 'GET',
