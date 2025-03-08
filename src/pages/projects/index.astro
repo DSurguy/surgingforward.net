@@ -12,12 +12,15 @@ const posts = (await getCollection('project'));
     <p class="mt-2 mb-4">Feel free to browse <a href="https://github.com/DSurguy" class="underline">my github</a> for everything else.</p>
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
       {posts.map((post) => <a
-        class="border-2 border-slate-200 min-h-24 p-2"
+        class="border-2 border-slate-200 min-h-24 p-2 flex flex-col"
         href={`/projects/${post.id}`}
         data-astro-prefetch="hover"
       >
         <h3 class="font-semibold underline">{post.data.title}</h3>
-        <p>{post.data.description}</p>
+        <p class="grow">{post.data.description}</p>
+        <div>
+          {post.data.tags.map(tag => <span class="bg-teal-700 text-white rounded-md px-1 text-sm font-bold">{tag}</span>)}
+        </div>
       </a>)}
     </div>
   </div>

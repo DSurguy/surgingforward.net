@@ -2,6 +2,8 @@
 title: 'Terraria Server Wrapper'
 description: 'A node-based command line tool that bootstraps and launches a vanilla terraria server on Windows or Linux'
 repositoryUrl: 'https://github.com/DSurguy/TerrariaWrapper'
+tags:
+  - 'cli tool'
 ---
 
 ## Links
@@ -37,7 +39,7 @@ function ConfigServer(){
 
 1.0 only supports Windows, and was designed to be set up as a windows service eventually. I wanted to have the server register itself so it could just run in the background. I also included batch files so users could have something to double-click.
 
-![Ravings of a crazy person](/terraria-wrapper/windows-only.png "Screenshot of a readme line where I state support for windows only")
+![Ravings of a crazy person](/blog-assets/terraria-wrapper/windows-only.png "Screenshot of a readme line where I state support for windows only")
 
 Turns out, this isn't a great design. It's almost always better to let the end user decide how to run the process in the background. Users getting this project from github would have been savvy enough to use the command line anyway.
 
@@ -60,7 +62,7 @@ This update had a few goals:
 - Support Linux
 
 ### Tool and Dependency Updates
-![screenshot of package.json update diff](/terraria-wrapper/pkg-diff.png "package.json update diff")
+![screenshot of package.json update diff](/blog-assets/terraria-wrapper/pkg-diff.png "package.json update diff")
 
 The first order of business was to massively increase the supported version of node. The original project was almost certainly using a 0.x version, and was ten years out of date. Modern versions of node js support promises natively, so there was no longer a reason to include the `q` package.
 
