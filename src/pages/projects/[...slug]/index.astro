@@ -1,8 +1,6 @@
 ---
 import { type CollectionEntry, getCollection, render } from 'astro:content';
 import ProjectPage from '@/layouts/ProjectPage.astro';
-
-import * as projectMdxComponents from '@/components/react/ProjectMdxComponents'
 import ProjectHeader from '@/components/ProjectHeader.astro';
 
 export async function getStaticPaths() {
@@ -15,12 +13,12 @@ export async function getStaticPaths() {
 type Props = CollectionEntry<'project'>;
 
 const post = Astro.props;
-const { Content } = await render(post);
 ---
 
 <ProjectPage {...post.data} title={`Project: ${post.data.title}`}>
   <ProjectHeader title={post.data.title} projectId={post.id} />
   <div class="p-4 pb-16">
-	  <Content components={{ ...projectMdxComponents }} />
+	  <p>TODO: List of associated blog posts</p>
+		<p>TODO: Link to releases</p>
   </div>
 </ProjectPage>

@@ -1,8 +1,8 @@
 ---
-import GithubIcon from "@/components/react/icons/GithubIcon";
-import MailIcon from "@/components/react/icons/MailIcon";
-import BlueskyIcon from "@/components/react/icons/BlueskyIcon";
-import LinkedinIcon from "@/components/react/icons/LinkedinIcon";
+import GithubIcon from "@/components/icons/GithubIcon.astro";
+import MailIcon from "@/components/icons/MailIcon.astro";
+import BlueskyIcon from "@/components/icons/BlueskyIcon.astro";
+import LinkedinIcon from "@/components/icons/LinkedinIcon.astro";
 import ContentPage from "@/layouts/ContentPage.astro";
 
 ---
@@ -11,7 +11,7 @@ import ContentPage from "@/layouts/ContentPage.astro";
   <div class="p-4">
     <h1 class="text-3xl pb-4">Contact Derek Surguy</h1>
     <p class="py-2">Below you can find a collection of places I have an online presence.</p>
-    <p class="py-2">I vastly prefer email to all other forms of communication, so please try that first!</p>
+    <p class="py-2">I vastly prefer email to all other forms of communication, so please try that first! Feel free to send me a bsky DM tho!</p>
     <p class="pt-2">If you're a junior or mid-level developer, I'd be happy to offer reviews and knowledge if you're looking for help growing your skills.</p>
     
     <div class="sm:flex bg-slate-200 rounded-md mt-8">
@@ -40,7 +40,7 @@ import ContentPage from "@/layouts/ContentPage.astro";
         <BlueskyIcon className="w-6 h-6 sm:w-8 sm:h-8" />
       </div>
       <div class="text-xl md:text-2xl py-4 lg:py-0 flex items-center justify-center grow text-center">
-        https://bsky.app/profile/dsurguy.surgingforward.net
+        <a href="https://bsky.app/profile/dsurguy.surgingforward.net" class="underline">https://bsky.app/profile/dsurguy.surgingforward.net</a>
       </div>
     </div>
 

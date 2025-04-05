@@ -1,0 +1,23 @@
+---
+import { twMerge } from "tailwind-merge"
+
+type Props = {
+  className?: string;
+}
+
+const { className } = Astro.props;
+
+const itemClass = "mx-2 lg:ml-8 text-black dark:text-white hover:text-slate-700 dark:hover:text-slate-500 hover:underline transition-colors duration-200"
+const baseClassName = "p-2 flex justify-start lg:justify-end bg-slate-200 dark:bg-slate-800 [clip-path:polygon(0 0, 100% 0, 90% 100%, 0% 100%)]";
+
+const mergedClassName = twMerge(baseClassName, className);
+
+---
+
+<nav class={mergedClassName}>
+  <a href="/" data-astro-prefetch="load" class={itemClass}>Home</a>
+  <a href="/blog" data-astro-prefetch="load" class={itemClass}>Blog</a>
+  <a href="/resume" data-astro-prefetch="load" class={itemClass}>Resume</a>
+  <a href="/projects" data-astro-prefetch="load" class={itemClass}>Projects</a>
+  <a href="/contact" data-astro-prefetch="load" class={itemClass}>Contact</a>
+</nav>
