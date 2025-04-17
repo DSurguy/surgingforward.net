@@ -12,6 +12,7 @@ import MailIcon from '@/components/icons/MailIcon.astro';
 import Headshot from '@/assets/face-regular.jpg'
 import FormattedDate from '@/components/FormattedDate.astro';
 import Footer from '@/components/Footer.astro';
+import Body from '@/components/Body.astro';
 
 const latestPosts = (await getCollection('blog')).sort(
 	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
@@ -25,7 +26,7 @@ if( !latestPosts?.length ) throw Error("Unable to determine latest blog posts");
   <head>
     <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
   </head>
-  <body>
+  <Body>
     <div class="overflow-x-hidden relative min-h-screen grid grid-rows-[auto_1fr_auto]">
       <div class="pt-4 pb-8 relative z-10">
         <Menu className="w-[380px] lg:w-[760px]" />
@@ -82,5 +83,5 @@ if( !latestPosts?.length ) throw Error("Unable to determine latest blog posts");
         <Footer />
       </div>
     </div>
-  </body>
+  </Body>
 </html>
