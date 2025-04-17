@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  display: initial !important;
+  height: 100%;
+  width: 100%;
+}
+
 @layer components {
   .main-bg {
     position: absolute;
