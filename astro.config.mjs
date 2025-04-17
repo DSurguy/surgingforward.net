@@ -4,18 +4,16 @@ import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import tailwind from '@astrojs/tailwind';
 
-import node from '@astrojs/node';
+import vercel from '@astrojs/vercel';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://surgingforward.net',
+  site: 'https://astro.surgingforward.net',
   integrations: [mdx(), sitemap(), tailwind()],
   outDir: './dist',
   cacheDir: './cache',
   prefetch: true,
-  adapter: node({
-    mode: 'standalone',
-  }),
+  adapter: vercel(),
   server: {
     port: 3000
   },
