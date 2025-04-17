@@ -3,5 +3,6 @@
   "buildCommand": "bun run build",
   "outputDirectory": "dist",
   "installCommand": "bun install",
-  "framework": "astro"
+  "framework": "astro",
+  "ignoreCommand": "exit 1"
 }
