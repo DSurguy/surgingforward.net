@@ -33,7 +33,7 @@ const project = defineCollection({
   schema: z.object({
     title: z.string(),
     description: z.string(),
-    repositoryUrl: z.string(),
+    links: z.optional(z.array(z.string())),
     tags: z.array(z.string())
   }),
 });

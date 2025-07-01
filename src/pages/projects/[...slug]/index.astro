@@ -20,8 +20,7 @@ const { Content } = await render(post);
 <ProjectPage {...post.data} title={`Project: ${post.data.title}`}>
   <ProjectHeader title={post.data.title} projectId={post.id} />
   <div class="p-4 pb-16">
-	  <p>TODO: List of associated blog posts</p>
-		<p>TODO: Link to releases</p>
+	  <p>TODO: post.data.links</p>
 		<Content components={{ ...blogComponents }} />
   </div>
 </ProjectPage>

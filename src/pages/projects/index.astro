@@ -19,7 +19,7 @@ const posts = (await getCollection('project'));
         <h3 class="font-semibold underline">{post.data.title}</h3>
         <p class="grow">{post.data.description}</p>
         <div>
-          {post.data.tags.map(tag => <span class="bg-teal-700 text-white rounded-md px-1 text-sm font-bold">{tag}</span>)}
+          {post.data.tags.map(tag => <span class="bg-teal-700 text-white rounded-md px-1 text-sm font-bold mr-1">{tag}</span>)}
         </div>
       </a>)}
     </div>
