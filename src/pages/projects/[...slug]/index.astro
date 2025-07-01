@@ -2,6 +2,7 @@
 import { type CollectionEntry, getCollection, render } from 'astro:content';
 import ProjectPage from '@/layouts/ProjectPage.astro';
 import ProjectHeader from '@/components/ProjectHeader.astro';
+import * as blogComponents from '@/components/blogComponents'
 
 export async function getStaticPaths() {
 	const posts = await getCollection('project');
@@ -13,6 +14,7 @@ export async function getStaticPaths() {
 type Props = CollectionEntry<'project'>;
 
 const post = Astro.props;
+const { Content } = await render(post);
 ---
 
 <ProjectPage {...post.data} title={`Project: ${post.data.title}`}>
@@ -20,5 +22,6 @@ const post = Astro.props;
   <div class="p-4 pb-16">
 	  <p>TODO: List of associated blog posts</p>
 		<p>TODO: Link to releases</p>
+		<Content components={{ ...blogComponents }} />
   </div>
 </ProjectPage>
