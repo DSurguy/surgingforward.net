@@ -1,0 +1,27 @@
+---
+import BaseHead from "@/components/BaseHead.astro";
+import Body from "@/components/Body.astro";
+
+const { title, description } = Astro.props
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead title={title} description={description} />
+    <style is:inline>
+      body {
+        visibility: hidden;
+        opacity: 0;
+      }
+    </style>
+
+    <style is:global>
+      body {
+        visibility: visible;
+        opacity: 1;
+        transition: visibility 0.2s linear, opacity 0.2s linear;
+      }
+    </style>
+  </head>
+  <Body><slot /></Body>
+</html>
