@@ -1,0 +1,18 @@
+---
+title: "QR-Code Party Game"
+description: ""
+links:
+  - 'https://github.com/DSurguy/qr-game'
+tags: 
+  - 'full stack'
+---
+
+## What It Is
+This is a three-piece application that serves up a game based on scanning QR codes to battle your friends and buy items. I made this to support a party I was having where people would team up and/or fight each other to buy fun party items, such as color dust for the fire pit, or fun new drink recipes.
+
+The app is made of the following three pieces:
+- API Server
+- Admin Web Client
+- Frontend Game Web Client 
+
+## TODO - this is WIP
