@@ -2,6 +2,7 @@
 import { type CollectionEntry, getCollection, render } from 'astro:content';
 import BlogPage from '@/layouts/BlogPage.astro';
 import * as blogComponents from '@/components/blogComponents'
+import BlogHeader from '@/components/BlogHeader.astro';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
@@ -17,6 +18,7 @@ const { Content } = await render(post);
 ---
 
 <BlogPage {...post.data}>
+  <BlogHeader title={post.data.title} projectId={post.id} />
   <div class="p-4 pb-16">
     <Content components={{ ...blogComponents }} />
   </div>
