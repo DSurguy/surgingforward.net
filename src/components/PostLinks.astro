@@ -3,6 +3,7 @@ import {
   h2 as Header2,
   ul as UnList,
   li as List,
+  a as Anchor
 } from '@/components/blogComponents'
 
 interface Props {
@@ -14,5 +15,5 @@ const { links } = Astro.props;
 
 <Header2 className="pt-0">Links</Header2>
 <UnList>
-  {links.map(link => <List>{link}</List>)}
+  {links.map(link => <List><Anchor href={link}>{link}</Anchor></List>)}
 </UnList>
