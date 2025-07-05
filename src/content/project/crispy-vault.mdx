@@ -3,9 +3,109 @@ title: "Crispy Vault"
 description: "A desktop webapp for managing assets and files"
 links:
   - https://github.com/DSurguy/crispy-vault/tree/develop
+  - https://github.com/DSurguy/crispy-vault-golang/tree/main
+pubDate: '2025-07-05'
 tags: 
   - 'tauri'
   - 'rust'
   - 'golang'
   - 'desktop app'
 ---
+
+## What It Is
+Crispy Vault is a WIP desktop application built with [https://tauri.app/](Tauri)
+
+This project is some early progress toward creating a desktop application to help a friend manage assets from audio production work. The application acts as a vault that contains the "official" versions of files associated with audio asset.
+
+It's very early in development, and is currently on hold as my friend has put a pause on their audio production work.
+
+![A screenshot of the dashboard with mock data](/blog-assets/crispy-vault/screenshot.png)
+
+An audio asset is a complex thing, and could contain the following (and more!):
+- Studio project files
+- Masters
+- Licensing documents
+- NDAs
+- Platform publishing documents
+- Effective dates of the above
+
+Because many of these files are sensitive, there's a desire NOT to store these in the cloud, as many cloud storage providers can't be trusted, and many NDAs will explicitly forbid this. The application will eventually support network-attached storage as the backing location for the file vault, solving the cloud storage problem with local volume storage.
+
+## Why Not Electron?
+Electron takes the approach of ensuring cross-platform identical experiences by embedding a specific webview environment into your application. This is quite large, and overkill for most experiences.
+
+Tauri uses the native system webviews instead on each platform. This makes it harder to support bleeding-edge browser features (looking at you, macOS), but the basic feature set of webviews is more than enough for most applications. Additionally, it brings a bunch of type+memory safety to the backend of the application through rust instead of node.
+
+This should result in highly performant and safe OS and file system operations, which is appealing.
+
+Last, rust is super popular and this was a good excuse to learn it some, since most webdev tooling is heading into the rust dimension.
+
+## How It Works
+Since I'm a web developer at heart, I structured the application like a traditional webapp, with a backend API that exposes endpoints to a React frontend Single Page Application (SPA). The Tauri layer acts as the server, exposing "endpoints" through the command interface. (see: https://tauri.app/concept/inter-process-communication/#commands)
+
+The Tauri layer is then backed by a sqlite database, stored in the user's appdata directory (this will be confurable in the future). Asset, file and tag metadata is stored in the sqlite database, and each thing is given a GUID. When files are added to the vault, they're copied to the same directory structure, and stored by GUID.
+
+<div>
+  ```
+  /home/<user>/.local/.share/com.surgingforward.crispy-vault
+    database.db
+    /assets
+      /d6a6f4c5-9153-4240-bb8a-90be99ff4250
+        d7360ddb-6bd8-4207-80b6-8f3380bcca58.doc
+        633f1f89-537c-4851-bb73-c2dcefdf4cad.mp4
+      /a494e3fe-d179-4854-9ec1-2cb9706a1900
+        96949c70-705a-485d-a022-c122bd06a681.doc
+        33e765a9-32c1-4e17-a6f8-167b8deea493.mp4
+  ```
+  <div class="flex justify-center text-sm text-slate-500">A example of the application's data structure</div>
+</div>
+
+This allows a user to arbitrarily name and describe files, without worrying about any weird encoding stuff on the file system. One drawback to this is that is does make it hard to manually browse the vault, but this isn't relevant in normal operation.
+
+The frontend is an unremarkable React SPA, using vite as the bundler/compiler, tanstack for routing/forms, and tailwind for styles. Instead of using `fetch` and making API calls, it just imports and uses the Tauri `invoke`.
+
+## The Golang Rewrite Incident
+It should be obvious to anyone reading the source code for this project that I am not a rustacean. Rust was (and still is) very new to me, so there was a lot of stumbling around in the dark. The rust crate docs are very good, so I was never blocked for too long. Except for one bug.
+
+Rust is VERY opinionated about how errors (or possible errors) should be handled, with most things being wrapped inside a `Result`, which requires you to handle the error state before using the value. Coupled with the sqlite library (rusqlite), this tree of possible error states became quickly confusing. Something that helped a lot was consuming the `anyhow` crate to better respond to errors instead of having the app panic and die.
+
+Most of the time, I was able to understand errors I was receiving, but I kept getting confusing errors when trying to implement the `tag_search` endpoint. At this point, I had been struggling with rusqlite and how its results could be cast to actual values - especially when multiple rows were returned. I ran through a [couple permutations](https://github.com/DSurguy/crispy-vault/commits/02f567f8e50bac853bbd3c89bba6f70be5b196d3/src-tauri/src/tag/commands/tag_search.rs) of the tag search, but couldn't get it working.
+
+At this point, I'd been crunching on the app pretty hard, and was experiencing mental fatigue. This made me irritable and impatient, so I came to a conclusion:
+
+I wasn't getting good enough at rust, so it must not be right for me. _**I'll rewrite the entire app in golang.**_
+
+This is, of course, insane.
+
+### How it went
+I had dabbled with golang on another project, so I wasn't totally unfamiliar with the language. In addition, after doing some research for other Tauri/Electron alternatives, I discovered [Wails](https://wails.io/). Wails was early in production, and supported mostly by a solo developer. It seemed like a cool, feature-complete project that worked the same as tauri or electron.
+
+After getting golang + wails set up, I was able to largely migrate the frontend SPA with simple copy-paste.
+
+For the rust portion, I had to manually convert every invocation handler.
+
+Compare these two, for example:
+- https://github.com/DSurguy/crispy-vault/blob/develop/src-tauri/src/asset/commands/create_asset.rs
+- https://github.com/DSurguy/crispy-vault-golang/blob/main/src/assetmanager/asset.go#L16
+
+or
+- https://github.com/DSurguy/crispy-vault/blob/develop/src-tauri/src/asset/commands/add_file_to_asset.rs
+- https://github.com/DSurguy/crispy-vault-golang/blob/main/src/assetmanager/assetFile.go#L60
+
+The app features are relatively simple, so this wasn't very complex.
+
+Once I completed all the conversions (and figured out how golang wants to do modules), the app was up and running. I was able to confirm that I had 100% feature parity with the Tauri app, so I tested my tag search.
+
+<p class="my-8">_**It had the same bug.**_</p>
+
+This time, I was clearly receiving a sqlite error, and was able to quickly diagnose and solve the bug in golang. I ported it over to the Tauri app, and solved the problem there too:
+
+https://github.com/DSurguy/crispy-vault/commit/019751a4ac2569bbcddae57a68a6387461fbb7a5
+
+So the lesson here, is that if you can't read the errors from your current programming language, rewrite the entire application in a different one so you can read the error. Most expensive dev tool ever.
+
+### Some Other Notes
+- sqlite might not come with `fts5` (and other modules!) enabled by default, depending on the library you're using. In many cases, you have to manually enable this as part of setting up your adapter. Fun times.
+
+## Try It out
+Both versions of the application completely run and have comprehensive readmes. Please feel free to download, build and run them to play around. If you have feedback on my rust or go, please send it to me!
