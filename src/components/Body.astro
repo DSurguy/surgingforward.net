@@ -1,3 +1,7 @@
-<body class={`bg-cyan-900 dark:bg-slate-800 bg-cover bg-no-repeat bg-center bg-fixed w-full h-full overflow-x-hidden dark:text-slate-200`}>
+<body style={{
+  display: 'none',
+  opacity: 0,
+  transition: 'visibility 0.2s linear, opacity 0.2s linear'
+}}class={`bg-cyan-900 dark:bg-slate-800 bg-cover bg-no-repeat bg-center bg-fixed w-full h-full overflow-x-hidden dark:text-slate-200 !block !opacity-100`}>
   <slot />
 </body>
