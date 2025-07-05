@@ -3,6 +3,7 @@ import { type CollectionEntry, getCollection, render } from 'astro:content';
 import ProjectPage from '@/layouts/ProjectPage.astro';
 import ProjectHeader from '@/components/ProjectHeader.astro';
 import * as blogComponents from '@/components/blogComponents'
+import PostLinks from '@/components/PostLinks.astro';
 
 export async function getStaticPaths() {
 	const posts = await getCollection('project');
@@ -20,7 +21,7 @@ const { Content } = await render(post);
 <ProjectPage {...post.data} title={`Project: ${post.data.title}`}>
   <ProjectHeader title={post.data.title} projectId={post.id} />
   <div class="p-4 pb-16">
-	  <p>TODO: post.data.links</p>
+	  {post.data.links && <PostLinks links={post.data.links} />}
 		<Content components={{ ...blogComponents }} />
   </div>
 </ProjectPage>
