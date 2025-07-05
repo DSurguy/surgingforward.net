@@ -9,7 +9,7 @@ interface Props extends HTMLAttributes<'h2'>{
 
 const props = Astro.props;
 
-const className = twMerge("text-2xl mb-2 pb-1 pt-4 border-b border-slate-300 w-6/12", props.className)
+const className = twMerge("text-2xl mb-2 pb-1 pt-4 border-b border-slate-300 w-6/12 print:text-lg", props.className)
 ---
 
 <h2 class={className} {...props}><slot /></h2>

@@ -12,7 +12,7 @@ const baseMainClass = "relative mx-auto bg-neutral-50 dark:bg-slate-900 transiti
 
 <Base {...Astro.props}>
   <div class="overflow-x-hidden relative min-h-screen grid grid-rows-[auto_1fr_auto]">
-    <div class="pt-4 pb-8 relative z-10">
+    <div class="pt-4 pb-8 relative z-10 print:hidden">
       <Menu className="w-[380px] lg:w-[760px]" />
     </div>
     <div class="w-[95%] sm:w-[90%] md:w-[80%] lg:w-[920px] mx-auto relative overflow-x-hidden">
@@ -21,7 +21,7 @@ const baseMainClass = "relative mx-auto bg-neutral-50 dark:bg-slate-900 transiti
         <slot />
       </main>
     </div>
-    <div class="w-[95%] sm:w-[90%] md:w-[80%] lg:w-[920px] bg-neutral-50 dark:bg-slate-900 mx-auto p-2 relative z-10">
+    <div class="w-[95%] sm:w-[90%] md:w-[80%] lg:w-[920px] bg-neutral-50 dark:bg-slate-900 mx-auto p-2 relative z-10 print:hidden">
       <Footer />
     </div>
   </div>  
