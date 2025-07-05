@@ -1,7 +1,7 @@
 # 1.0
 - [x] Releases per-project
-- [ ] At least three projects
-- [ ] Website blog post
+- [x] At least three projects
+- [x] Website blog post
 - [x] Contact page
 - [ ] Metadata
-- [ ] View Transitions
+- [ ] Pre-commit to render resume to PDF
