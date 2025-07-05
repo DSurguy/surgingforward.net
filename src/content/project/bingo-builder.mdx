@@ -19,6 +19,8 @@ I looked into online bingo generators, and they all wanted to charge more than I
 
 As I frequently do, I took matters into my own hands and decided to generate the sheets myself, and print them from my laserjet onto sticker paper. To do so, I'd need an app.
 
+![one of the generated bingo sheets as a sticker on a solo cup](/blog-assets/bingo-builder/cup.png "Project List")
+
 ## The App
 Bingo-builder is a React Single Page Application (SPA) that runs entirely client-side in the user's browser, including PDF generation and download. The UI uses material-ui for design and components.
 
@@ -38,8 +40,22 @@ The user can then generate their desired number of sheets, and a preview will be
 
 ![screenshot of bingo generation and output](/blog-assets/bingo-builder/output.png "Bingo Generation")
 
-## Complications, Bugs and Future Development
+## How It Works
+The app is a simple vite + react SPA, styled with material-ui theme and components. The final sheets are rendered to PDF using jsPdf.
 
+The interesting part is how I decide the font size for each bingo item. I wanted to print 4 sheets per actual printer sheet, so I defined some arbitrary sizes to keep to the 8.5x11 paper size, which you can see here: https://github.com/DSurguy/bingo-builder/blob/main/src/utils/constants.ts.
+
+I then run the following algorith for each item:
+- Render an element that is the box size
+- Render the text, centered as a child of that box element
+- Check to see if the text element is wider than the box element
+- If so, reduce the font size by 1px and repeat
+
+The algorithm bottoms out at 6px, because anything less than that was unreadable.
+
+Finally, when outputting to PDF, I have to do a conversion from `px` to `pt`, which is not clean at all, see: https://github.com/DSurguy/bingo-builder/blob/main/src/utils/conversions.ts#L3.
+
+## Complications, Bugs and Future Development
 - Pixels and points don't have a clean 1-to-1 mapping, so the css rendering is an approximation of the final PDF rendering. There's some math involved, but text does occasionally overlap the box borders in the final product.
 - It's hard for users to migrate projects from one device to another. I'd like to create an import/export process to facilitate this
 - Server-side auth and storage is obviously the best user experience, but it ain't free. Still would be nice.
