@@ -29,20 +29,20 @@ if( !latestPosts?.length ) throw Error("Unable to determine latest blog posts");
       <div class="main-bg bg-neutral-50 dark:bg-slate-900 z-0"></div>
       <main class="relative z-10 pb-8">
         <div class="ml-5 md:ml-20">
-          <div class="relative h-[160px] md:h-[240px] mb-2">
-            <div class="absolute w-[160px] h-[160px] md:w-[240px] md:h-[240px] rounded-full bg-teal-800 border-teal-800 border-2 z-20 overflow-hidden">
+          <div class="relative h-[120px] sm:h-[160px] md:h-[240px] mb-2">
+            <div class="absolute w-[120px] h-[120px] sm:w-[160px] sm:h-[160px] md:w-[240px] md:h-[240px] rounded-full bg-teal-800 border-teal-800 border-2 z-20 overflow-hidden">
               <Image src={Headshot} alt="A picture of my lovely face" />
             </div>
-            <div class="bg-teal-800 text-white text-2xl flex h-[40px] w-[250px] md:h-[48px] md:w-[350px] rounded-r-full absolute z-10 top-0 left-[80px] md:left-[120px] justify-end items-center">
+            <div class="bg-teal-800 text-white text-xl sm:text-2xl flex h-[32px] w-[200px] sm:h-[40px] sm:w-[250px] md:h-[48px] md:w-[350px] left-[60px] sm:left-[80px] md:left-[120px] top-0 rounded-r-full absolute z-10 justify-end items-center">
               <h1 class="mr-4 md:mr-16 mt-[-2px]">Derek Surguy</h1>
             </div>
-            <div class="bg-teal-800 text-white flex h-[32px] w-[320px] md:w-[350px] rounded-r-full absolute z-10 bottom-[40px] left-[120px] md:left-[150px] justify-end items-center">
+            <div class="bg-teal-800 text-white text-xs sm:text-base flex h-[28px] w-[230px] sm:h-[32px] sm:w-[320px] md:w-[350px] left-[100px] sm:left-[120px] md:left-[150px] bottom-[40px] rounded-r-full absolute z-10 justify-end items-center">
               <a href="https://github.com/DSurguy" class="underline mr-2 mt-[-2px]">https://github.com/DSurguy</a>
-              <GithubIcon className="mr-4" />
+              <GithubIcon className="mr-2 sm:mr-4" />
             </div>
-            <div class="bg-teal-800 text-white flex h-[32px] w-[320px] md:w-[350px] rounded-r-full absolute z-10 bottom-0 left-[80px] md:left-[120px] justify-end items-center">
-              <a href="mailto:Surguy.Derek@gmail.com" class="underline mr-2 mt-[-2px]">Surguy.Derek@gmail.com</a>
-              <MailIcon className="mr-4" />
+            <div class="bg-teal-800 text-white text-xs sm:text-base flex h-[28px] w-[250px] sm:h-[32px] sm:w-[320px] md:w-[350px] left-[60px] sm:left-[80px] md:left-[120px] bottom-0 rounded-r-full absolute z-10 justify-end items-center">
+              <a href="mailto:Surguy.Derek@gmail.com" class="underline mr-2 mt-[-2px]">Surguy.Derek@startmail.com</a>
+              <MailIcon className="mr-2 sm:mr-4" />
             </div>
           </div>
           <div class="lg:w-[500px] mr-5 md:mr-20">

@@ -12,20 +12,20 @@ import Headshot from '../assets/face-regular.jpg'
 
 <ContentPage title={frontmatter.title} description={frontmatter.description}>
   <a href="/resume.pdf" class="block m-4 underline print:hidden">Download PDF</a>
-  <div class="relative h-[160px] mb-2 m-8 print:hidden">
-    <div class="absolute w-[160px] h-[160px] rounded-full bg-teal-800 border-teal-800 border-2 z-20 overflow-hidden">
+  <div class="relative h-[120px] sm:h-[160px] my-2 ml-4 sm:ml-8 print:hidden">
+    <div class="absolute w-[120px] h-[120px] sm:w-[160px] sm:h-[160px] rounded-full bg-teal-800 border-teal-800 border-2 z-20 overflow-hidden">
       <Image src={Headshot} alt="A headshot of myself" />
     </div>
-    <div class="bg-teal-800 text-white text-2xl flex h-[40px] w-[250px] rounded-r-full absolute z-10 top-0 left-[80px] justify-end items-center">
+    <div class="bg-teal-800 text-white text-xl sm:text-2xl flex h-[32px] w-[200px] sm:h-[40px] sm:w-[250px] left-[60px] sm:left-[80px] top-0 rounded-r-full absolute z-10 justify-end items-center">
       <h1 class="mr-4 mt-[-2px]">Derek Surguy</h1>
     </div>
-    <div class="bg-teal-800 text-white flex h-[32px] w-[320px] rounded-r-full absolute z-10 bottom-[40px] left-[120px] justify-end items-center">
-      <a href="https://github.com/DSurguy" class="underline mr-2 mt-[-2px]">https://github.com/DSurguy</a>
-      <GithubIcon className="mr-4" />
+    <div class="bg-teal-800 text-white text-xs sm:text-base flex h-[28px] w-[250px] sm:h-[32px] sm:w-[320px] left-[80px] sm:left-[120px] bottom-[32px] sm:bottom-[40px] rounded-r-full absolute z-10 justify-end items-center">
+      <a href="https://github.com/DSurguy" class="underline mr-1 sm:mr-2 mt-[-2px]">https://github.com/DSurguy</a>
+      <GithubIcon className="mr-2 sm:mr-4" />
     </div>
-    <div class="bg-teal-800 text-white flex h-[32px] w-[320px] rounded-r-full absolute z-10 bottom-0 left-[80px] justify-end items-center">
-      <a href="mailto:Surguy.Derek@gmail.com" class="underline mr-2 mt-[-2px]">Surguy.Derek@gmail.com</a>
-      <MailIcon className="mr-4" />
+    <div class="bg-teal-800 text-white text-xs sm:text-base flex h-[28px] w-[250px] sm:h-[32px] sm:w-[330px] left-[60px] sm:left-[80px] bottom-0 rounded-r-full absolute z-10 justify-end items-center">
+      <a href="mailto:Surguy.Derek@gmail.com" class="underline mr-1 sm:mr-2 mt-[-2px]">Surguy.Derek@startmail.com</a>
+      <MailIcon className="mr-2 sm:mr-4" />
     </div>
   </div>
   <div class="hidden print:flex justify-evenly py-2 border-slate-800 border m-2 ">
