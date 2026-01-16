@@ -1,3 +1,3 @@
 bun run build --pdf
-cp .vercel/output/static/resume.pdf src/assets/resume.pdf
-git add src/assets/resume.pdf --force
+cp .vercel/output/static/build-artifacts/resume.pdf public/resume.pdf
+git add public/resume.pdf --force
