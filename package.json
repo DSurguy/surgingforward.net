@@ -11,21 +11,24 @@
     "prepare": "husky"
   },
   "dependencies": {
-    "@astrojs/mdx": "4.3.0",
-    "@astrojs/node": "9.2.2",
-    "@astrojs/react": "4.3.0",
-    "@astrojs/rss": "4.0.12",
-    "@astrojs/sitemap": "^3.4.1",
-    "@astrojs/tailwind": "6.0.2",
-    "@astrojs/vercel": "8.2.0",
-    "astro": "5.10.1",
+    "@astrojs/mdx": "^4.3.13",
+    "@astrojs/node": "^9.5.1",
+    "@astrojs/react": "^4.4.2",
+    "@astrojs/rss": "^4.0.14",
+    "@astrojs/sitemap": "^3.6.1",
+    "@astrojs/tailwind": "^6.0.2",
+    "@astrojs/vercel": "^9.0.3",
+    "astro": "^5.16.9",
     "astro-pdf": "^1.7.2",
     "react-markdown": "^9.1.0",
     "remark-gfm": "^4.0.1",
     "tailwind-merge": "^2.6.0",
-    "tailwindcss": "^3.4.17"
+    "tailwindcss": "^3.4.19"
   },
   "devDependencies": {
     "husky": "^9.1.7"
+  },
+  "overrides": {
+    "path-to-regexp": "^6.3.0"
   }
 }
