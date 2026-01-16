@@ -8,18 +8,21 @@ import vercel from '@astrojs/vercel';
 
 import pdf from 'astro-pdf';
 
+const generatePdf = process?.argv?.includes('--pdf');
+
 // https://astro.build/config
 export default defineConfig({
   site: 'https://astro.surgingforward.net',
-  integrations: [mdx(), sitemap(), tailwind(), pdf({
+  integrations: [mdx(), sitemap(), tailwind(), generatePdf && pdf({
     pages: {
       '/resume': [{
-        path: 'resume.pdf',
+        path: 'build-artifacts/resume.pdf',
         pdf: {
           margin: {
             top: 20
           }
-        }
+        },
+        throwOnFail: true,
       }]
     }
   })],
