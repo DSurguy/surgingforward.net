@@ -13,15 +13,12 @@
   "dependencies": {
     "@astrojs/mdx": "^4.3.13",
     "@astrojs/node": "9.5.4",
-    "@astrojs/react": "^4.4.2",
     "@astrojs/rss": "4.0.15",
     "@astrojs/sitemap": "3.7.0",
     "@astrojs/vercel": "9.0.4",
     "@tailwindcss/vite": "4.2.1",
     "astro": "5.18.0",
     "astro-pdf": "^1.7.2",
-    "react-markdown": "10.1.0",
-    "remark-gfm": "^4.0.1",
     "tailwind-merge": "3.5.0",
     "tailwindcss": "4.2.1"
   },
