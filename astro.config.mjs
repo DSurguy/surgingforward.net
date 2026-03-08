@@ -2,7 +2,7 @@
 import { defineConfig, envField } from 'astro/config';
 import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
-import tailwind from '@astrojs/tailwind';
+import tailwindcss from '@tailwindcss/vite';
 
 import vercel from '@astrojs/vercel';
 
@@ -13,7 +13,7 @@ const generatePdf = process?.argv?.includes('--pdf');
 // https://astro.build/config
 export default defineConfig({
   site: 'https://astro.surgingforward.net',
-  integrations: [mdx(), sitemap(), tailwind(), generatePdf && pdf({
+  integrations: [mdx(), sitemap(), generatePdf && pdf({
     pages: {
       '/resume': [{
         path: 'build-artifacts/resume.pdf',
@@ -29,6 +29,9 @@ export default defineConfig({
   outDir: './dist',
   cacheDir: './cache',
   prefetch: true,
+  vite: {
+    plugins: [tailwindcss()]
+  },
   adapter: vercel(),
   server: {
     port: 3000
