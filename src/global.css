@@ -48,6 +48,15 @@ body {
   }
 }
 
+@view-transition {
+  navigation: auto;
+}
+
+@media not (prefers-reduced-motion: reduce) {
+  .main-transition {
+    view-transition-name: main-bg;
+  }
+}
 
 @layer components {
   .main-bg {
