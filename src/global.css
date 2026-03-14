@@ -52,9 +52,19 @@ body {
   navigation: auto;
 }
 
+.tgroup-bg {
+  z-index: -1px;
+}
+.tgroup-main {
+  z-index: 0;
+}
+
 @media not (prefers-reduced-motion: reduce) {
-  .main-transition {
-    view-transition-name: main-bg;
+  .tgroup-bg {
+    view-transition-name: tgroup-bg;
+  }
+  .tgroup-main {
+    view-transition-name: tgroup-main;
   }
 }
 
